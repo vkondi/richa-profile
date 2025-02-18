@@ -2,10 +2,7 @@ import "./styles.css";
 
 export default function UnderConstruction({ label }: { label?: string }) {
   return (
-    <div
-      className="flex justify-center items-center m-5 p-5 rounded-lg border-2 border-solid border-gray-300 animate-shiny light-animation"
-      style={{ minHeight: "400px" }}
-    >
+    <div className="container">
       {/* Icon */}
       <svg
         xmlns="http://www.w3.org/2000/svg"

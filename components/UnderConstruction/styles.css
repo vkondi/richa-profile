@@ -1,54 +1,14 @@
-@keyframes shiny {
-    0% {
-      border-color: gray;
-      color: gray;
-      background-color: white;
-    }
-    50% {
-        border-color: white;
-        color: white;
-        background-color: gray;
-    }
-    100% {
-      border-color: gray;
-      color: gray;
-      background-color: white;
-    }
-}
-
-.animate-shiny {
-    animation: shiny 15s infinite;
-}
-
-.light-animation {
-    position: relative; /* Make sure the light effect is positioned relative to this div */
-}
-
-.light-animation::before {
-    content: '';
-    position: absolute;
-    top: -5px; /* Adjust as necessary */
-    left: -5px; /* Adjust as necessary */
-    width: calc(100% + 10px); /* Adjust for border width */
-    height: calc(100% + 10px); /* Adjust for border width */
-    border-radius: inherit; /* Keep the same rounded corners */
-    border: 2px solid transparent; /* Border width */
-    box-shadow: 
-        0 0 10px rgba(255,255,255,0), 
-        inset 0 0 10px rgba(255,255,255,0);
-    animation: light-traveling-animation linear infinite;
-}
-
-@keyframes light-traveling-animation {
-    from {
-        box-shadow:
-            inset -10px -10px rgba(255,255,255,.5),
-            inset -10px -10px rgba(255,255,255,.5);
-    }
-    to {
-        box-shadow:
-            inset -10px -10px rgba(255,255,255,.5),
-            inset -10px -10px rgba(255,255,255,.5);
-        transform: rotate(360deg);
-    }
+.container {
+  box-sizing: border-box;
+  max-width: calc(100% - 20px);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  min-height: 50vh;
+  background-color: #8080804a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #535353;
 }

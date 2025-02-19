@@ -1,0 +1,48 @@
+.calculator-logo-container {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  border: 1px solid #626262;
+  padding: 20px;
+  border-radius: 1em;
+  background-color: white;
+  width: 15vw;
+  height: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: #626262;
+  transition: transform 0.3s ease;
+  max-width: 220px;
+  max-height: 220px;
+  font-weight: 400;
+}
+
+.calculator-logo-container:hover {
+  transform: scale(1.05);
+}
+
+@media only screen and (max-width: 480px) {
+  .calculator-logo-container {
+    width: 23vw;
+    height: 23vw;
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 920px) {
+  .calculator-logo-container {
+    width: 23vw;
+    height: 23vw;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 921px) {
+  .calculator-logo-container {
+    width: 15vw;
+    height: 15vw;
+    font-size: 1.2rem;
+  }
+}

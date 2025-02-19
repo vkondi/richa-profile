@@ -2,8 +2,9 @@
 // CalculatorTemplate.jsx
 
 import React, { FC, PropsWithChildren, useCallback } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import CalculatorLogo from "./CalculatorLogo";
 
 import { CALCULATOR_LINKS } from "@utils/constants";
 
@@ -20,12 +21,15 @@ const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
 
   const renderBottomNavLinks = useCallback(() => {
     return CALCULATOR_LINKS.filter(
-      (link) => link.href.indexOf(pathname) === -1,
+      (link) => link.href.indexOf(pathname) === -1
     ).map((link) => {
       return (
-        <Link href={link.href} style={{ fontSize: "20px" }} key={link.href}>
-          {link.label}
-        </Link>
+        <CalculatorLogo
+          href={link.href}
+          key={link.href}
+          label={link.label}
+          logoUrl={link.logoUrl}
+        />
       );
     });
   }, [pathname]);
@@ -43,6 +47,7 @@ const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
           alignItems: "center",
           color: "white",
           fontSize: "24px",
+          textAlign: "center",
         }}
       >
         {label}
@@ -62,9 +67,11 @@ const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
       <div
         style={{
           width: "100%",
-          minHeight: "200px",
+          paddingTop: 15,
+          paddingBottom: 15,
+          marginBottom: 50,
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-evenly",
           alignItems: "center",
           backgroundColor: "#f0f0f0", // Optional:  background color for better visibility
         }}

@@ -4,7 +4,7 @@ import UnderConstruction from "@/components/UnderConstruction";
 const NameNumerologyCalculator = () => {
   return (
     <CalculatorTemplate label="Name Numerology Calculator">
-      <UnderConstruction label="Coming soon..."/>
+      <UnderConstruction label="Coming soon..." />
     </CalculatorTemplate>
   );
 };

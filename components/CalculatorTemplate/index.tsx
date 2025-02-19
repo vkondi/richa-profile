@@ -20,7 +20,7 @@ const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
 
   const renderBottomNavLinks = useCallback(() => {
     return CALCULATOR_LINKS.filter(
-      (link) => link.href.indexOf(pathname) === -1
+      (link) => link.href.indexOf(pathname) === -1,
     ).map((link) => {
       return (
         <Link href={link.href} style={{ fontSize: "20px" }} key={link.href}>

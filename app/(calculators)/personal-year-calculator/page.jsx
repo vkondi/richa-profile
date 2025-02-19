@@ -4,7 +4,7 @@ import UnderConstruction from "@/components/UnderConstruction";
 const PerrsonalYearCalculator = () => {
   return (
     <CalculatorTemplate label="Personal Year Calculator">
-      <UnderConstruction label="Coming soon..."/>
+      <UnderConstruction label="Coming soon..." />
     </CalculatorTemplate>
   );
 };

@@ -18,7 +18,7 @@ const CalculatorsMenu = () => {
               <div
                 onClick={close}
                 className={`bg-gray-800 block ${
-                  active ? "bg-blue-100 text-black" : "text-white"
+                  active ? "bg-red-100 text-black" : "text-white"
                 } p-3 whitespace-wrap overflow-hidden`}
               >
                 <Link

@@ -1,7 +1,7 @@
 "use client";
 // CalculatorTemplate.jsx
 
-import React, { FC, PropsWithChildren, useCallback, useMemo } from "react";
+import React, { FC, PropsWithChildren, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

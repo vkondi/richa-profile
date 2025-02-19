@@ -1,0 +1,20 @@
+.container {
+  box-sizing: border-box;
+  max-width: calc(100% - 20px);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  min-height: 88vh;
+  background-color: #8080804a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #535353;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    min-height: 50vh;
+  }
+}

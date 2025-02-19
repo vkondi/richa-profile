@@ -1,17 +1,22 @@
 // components/Header.tsx
 import Link from "next/link";
+import CalculatorsMenu from "../CalculatorsMenu";
 
 const Header = () => {
   return (
     <header className="flex justify-around items-center p-4 bg-gray-800 text-white">
-      <Link href="/"><h1 className="text-xl font-bold">Richa Sharma K</h1></Link>
+      <Link href="/">
+        <h1 className="text-xl md:text-4xl font-bold">Richa Sharma K</h1>
+      </Link>
       <nav>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/about">About</Link>
+            <CalculatorsMenu />
           </li>
           <li>
-            <Link href="/tools">Tools</Link>
+            <Link href="/about" className="text-xs md:text-xl">
+              About
+            </Link>
           </li>
         </ul>
       </nav>

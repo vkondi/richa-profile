@@ -6,17 +6,57 @@ import TextInput from "@/components/TextInput/TextInput";
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
+
+type ResultCardProps = {
+  title: string;
+  result: string | number | undefined;
+};
+
+type SystemType = "chaldean" | "pythagorean";
+
+const ResultCard = ({ title, result }: ResultCardProps) => {
+  return (
+    <div className={styles.resultCard}>
+      <div className={styles.resultCardTitle}>{title}</div>
+      <div className={styles.resultCardResult}>{result}</div>
+    </div>
+  );
+};
 
 const NameNumerologyCalculator = () => {
-  const [system, setSystem] = useState<"chaldean" | "pythagorean">("pythagorean");
+  const [system, setSystem] = useState<SystemType>("pythagorean");
   const [name, setName] = useState<string | undefined>();
+  const [soulNumber, setSoulNumber] = useState<number | undefined>();
+  const [nameToNumber, setNameToNumber] = useState<number | undefined>();
+  const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = () => {
     if (name) {
-      console.log("convertNameToNumber: ", convertNameToNumber(name));
-      console.log("getSoulUrgeNumber: ", getSoulUrgeNumber(name));
+      setNameToNumber(
+        convertNameToNumber(
+          name,
+          system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
+        )
+      );
+      setSoulNumber(getSoulUrgeNumber(name, system));
+      setResultVisibility(true);
     }
+  };
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+    setSoulNumber(undefined);
+    setNameToNumber(undefined);
+    setResultVisibility(false);
+  };
+
+  const handleSystemChange = (value: SystemType) => {
+    setSystem(value);
+    setSoulNumber(undefined);
+    setNameToNumber(undefined);
+    setResultVisibility(false);
   };
 
   return (
@@ -30,7 +70,7 @@ const NameNumerologyCalculator = () => {
             <TextInput
               className={styles.textInput}
               value={name || ""}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange}
             />
 
             {/* System */}
@@ -39,13 +79,13 @@ const NameNumerologyCalculator = () => {
               <div className={styles.systemOptionContainer}>
                 <div
                   className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
-                  onClick={() => setSystem("pythagorean")}
+                  onClick={() => handleSystemChange("pythagorean")}
                 >
                   Pythagorean
                 </div>
                 <div
                   className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
-                  onClick={() => setSystem("chaldean")}
+                  onClick={() => handleSystemChange("chaldean")}
                 >
                   Chaldean
                 </div>
@@ -60,7 +100,12 @@ const NameNumerologyCalculator = () => {
         </div>
 
         {/* Result */}
-        <div className={styles.resultContainer}></div>
+        {resultVisibility && (
+          <div className={styles.resultContainer}>
+            <ResultCard title="Name to number" result={nameToNumber} />
+            <ResultCard title="Soul number" result={soulNumber} />
+          </div>
+        )}
       </div>
     </CalculatorTemplate>
   );

@@ -4,7 +4,7 @@ import UnderConstruction from "@/components/UnderConstruction";
 const DestinyNumberCalculator = () => {
   return (
     <CalculatorTemplate label="Destiny Number Calculator">
-      <UnderConstruction label="Coming soon..."/>
+      <UnderConstruction label="Coming soon..." />
     </CalculatorTemplate>
   );
 };

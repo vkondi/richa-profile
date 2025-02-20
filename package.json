@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "check-types": "tsc -b",
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "yarn check-types && next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

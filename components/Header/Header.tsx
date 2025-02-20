@@ -6,7 +6,9 @@ const Header = () => {
   return (
     <header className="flex justify-around items-center p-4 bg-gray-800 text-white">
       <Link href="/">
-        <h1 className="text-xl md:text-4xl font-bold">Richa Sharma K</h1>
+        <h1 className="text-xl md:text-4xl font-bold">
+          Vagmi Richa Vishwajeet
+        </h1>
       </Link>
       <nav>
         <ul className="flex space-x-4">

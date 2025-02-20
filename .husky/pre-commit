@@ -1,2 +1,2 @@
 yarn lint
-yarn build
+yarn check-types

@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
+import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
-import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
-import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
+import { getExpressionNumber } from "@utils/utility";
 import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
+import { SystemType } from "../name-numerology-calculator/page";
 
-export type SystemType = "chaldean" | "pythagorean";
-
-const NameNumerologyCalculator: React.FC = () => {
+const DestinyNumberCalculator: FC = () => {
   const [system, setSystem] = useState<SystemType>("pythagorean");
   const [name, setName] = useState<string | undefined>();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
@@ -29,19 +27,9 @@ const NameNumerologyCalculator: React.FC = () => {
     setResultVisibility(false);
   }, []);
 
-  const nameToNumber = useMemo(() => {
+  const expressionNumber = useMemo(() => {
     if (name) {
-      return convertNameToNumber(
-        name,
-        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
-      );
-    }
-    return undefined;
-  }, [name, system]);
-
-  const soulNumber = useMemo(() => {
-    if (name) {
-      return getSoulUrgeNumber(name, system);
+      return getExpressionNumber(name, system);
     }
     return undefined;
   }, [name, system]);
@@ -49,15 +37,14 @@ const NameNumerologyCalculator: React.FC = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Name to number" result={nameToNumber} />
-        <ResultTile title="Soul number" result={soulNumber} />
+        <ResultTile title="Destiny number" result={expressionNumber} />
       </>
     );
   };
 
   return (
     <NameCalculatorTemplate
-      title="Name Numerology Calculator"
+      title="Destiny Numerology Calculator"
       onCalculateClick={handleCalculate}
       name={name}
       onNameChange={handleNameChange}
@@ -69,4 +56,4 @@ const NameNumerologyCalculator: React.FC = () => {
   );
 };
 
-export default NameNumerologyCalculator;
+export default DestinyNumberCalculator;

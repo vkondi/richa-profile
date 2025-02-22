@@ -19,7 +19,6 @@ const CalculatorWrapper: FC<PropsWithChildren<CalculatorWrapperProps>> = ({
   children,
 }) => {
   const pathname = usePathname();
-  console.log("pathname: ", pathname);
 
   const renderBottomNavLinks = useCallback(() => {
     return CALCULATOR_LINKS.filter(

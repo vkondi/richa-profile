@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
-import CalculatorTemplate from "@/components/CalculatorTemplate";
+import CalculatorWrapper from "@/components/CalculatorWrapper";
 import TextInput from "@/components/TextInput/TextInput";
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
@@ -60,7 +60,7 @@ const NameNumerologyCalculator: React.FC = () => {
   }, [name, system]);
 
   return (
-    <CalculatorTemplate label="Name Numerology Calculator">
+    <CalculatorWrapper label="Name Numerology Calculator">
       <div className={styles.container}>
         {/* Form */}
         <div className={styles.formContainer}>
@@ -103,7 +103,7 @@ const NameNumerologyCalculator: React.FC = () => {
           </div>
         )}
       </div>
-    </CalculatorTemplate>
+    </CalculatorWrapper>
   );
 };
 

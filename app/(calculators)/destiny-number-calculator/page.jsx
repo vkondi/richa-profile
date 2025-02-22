@@ -1,11 +1,11 @@
-import CalculatorTemplate from "@/components/CalculatorTemplate";
+import CalculatorWrapper from "@/components/CalculatorWrapper";
 import UnderConstruction from "@/components/UnderConstruction";
 
 const DestinyNumberCalculator = () => {
   return (
-    <CalculatorTemplate label="Destiny Number Calculator">
+    <CalculatorWrapper label="Destiny Number Calculator">
       <UnderConstruction label="Coming soon..." />
-    </CalculatorTemplate>
+    </CalculatorWrapper>
   );
 };
 

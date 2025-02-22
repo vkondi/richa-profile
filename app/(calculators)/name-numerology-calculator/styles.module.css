@@ -9,11 +9,13 @@
 
 .formContainer {
   /* background-color: skyblue; */
-  padding: 0rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 30%;
 }
 
 .textInput {
-  width: 25vw;
   height: 50px;
   padding: 0.5rem;
   letter-spacing: 1px;
@@ -22,35 +24,29 @@
   margin-top: 10px;
 }
 
-.nameLabel {
+.label {
   color: black;
-  font-size: 1.3vw;
+  font-size: max(1.1vw, 1em);
   margin-top: 20px;
 }
 
 .calculateBtn {
   color: white;
-  font-size: 1.3vw;
+  font-size: max(1.2vw, 1.6em);
   font-weight: 600;
-  height: 50px;
-  width: auto;
+  padding: 0.6em 1em;
+  letter-spacing: 1px;
   border-radius: 20px;
   background-color: rgb(189, 58, 80);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0rem;
+  margin: 3rem 0rem;
 }
 
 .calculateBtn:hover {
   background-color: rgb(88, 25, 25);
-}
-
-.systemLabel {
-  color: black;
-  font-size: 1.3vw;
-  margin-top: 20px;
 }
 
 .systemOptionContainer {
@@ -69,6 +65,7 @@
   align-items: center;
   flex: 1;
   padding: 10px;
+  font-size: max(1.1vw, 1.3em);
 }
 
 .systemOptionSelected {
@@ -77,14 +74,16 @@
 }
 
 .resultContainer {
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex: 1;
   display: flex;
   column-gap: 20px;
-  padding: 10px;
+  row-gap: 20px;
   /* background-color: lightgrey; */
   animation: fadeIn 0.5s ease-in-out;
+  flex-wrap: wrap;
+  padding: 10px 0px;
 }
 
 @keyframes fadeIn {
@@ -98,16 +97,15 @@
 
 .resultCard {
   background-color: gold;
-  width: 15vw;
-  height: 15vw;
-  max-width: 220px;
-  max-height: 220px;
-  min-width: 150px;
-  min-height: 150px;
+  width: calc(33.33% - 0px);
+  aspect-ratio: 1 / 1;
+  min-width: 155px;
+  max-width: 320px;
   border-radius: 10px;
+  /* border: 1px solid gold; */
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  overflow: hidden;
 }
 
 .resultCardTitle {
@@ -115,106 +113,89 @@
   align-items: center;
   justify-content: center;
   padding: 10px 0px;
-  font-size: 1.3vw;
+  font-size: max(1.1vw, 1.3em);
+  white-space: nowrap;
+  text-overflow: unset;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .resultCardResult {
   color: #000000ab;
   flex: 1;
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: max(3.5vw, 4em);
   font-weight: bold;
+  background-color: #fbfaef;
 }
 
 @media only screen and (max-width: 480px) {
   .container {
     flex-direction: column;
-    margin: 0 5vw;
-    padding: 20px 0px;
+    margin: 0 2vw;
   }
 
-  .textInput {
-    width: 100%;
+  .label {
+    font-size: max(0.6vw, 0.8em);
   }
 
-  .nameLabel {
-    font-size: inherit;
+  .systemOption {
+    font-size: max(0.8vw, 1em);
   }
 
   .calculateBtn {
-    font-size: inherit;
-  }
-
-  .systemLabel {
-    font-size: inherit;
-  }
-
-  .resultCard {
-    min-width: 140px;
-    min-height: 140px;
+    font-size: max(0.9vw, 1.1em);
   }
 
   .resultCardTitle {
-    font-size: inherit;
+    font-size: max(0.8vw, 1em);
   }
 
   .resultCardResult {
-    font-size: 3rem;
+    font-size: max(3vw, 2.1em);
   }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 920px) {
-  /* .container {
-    flex-direction: column;
+@media only screen and (min-width: 481px) and (max-width: 820px) {
+  .container {
     margin: 0 5vw;
-    padding: 20px 0px;
-  } */
+  }
 
-  /* .textInput {
-    width: 100%;
-  } */
+  .formContainer {
+    align-items: stretch;
+    justify-content: center;
+  }
 
-  /* .nameLabel {
-    font-size: inherit;
-  } */
+  .label {
+    font-size: max(0.9vw, 1em);
+  }
 
-  /* .calculateBtn {
-    font-size: inherit;
-  } */
+  .systemOption {
+    font-size: max(1.1vw, 1.1em);
+  }
 
-  /* .systemLabel {
-    font-size: inherit;
-  } */
+  .calculateBtn {
+    font-size: max(1.3vw, 1.3em);
+  }
 
-  /* .resultCard {
-    min-width: 140px;
-    min-height: 140px;
-  } */
+  .resultCardTitle {
+    font-size: max(1.1vw, 1.1em);
+  }
 
-  /* .resultCardTitle {
-    font-size: inherit;
-  } */
-
-  /* .resultCardResult {
-    font-size: 3rem;
-  } */
+  .resultCardResult {
+    font-size: max(3.5vw, 3em);
+  }
 }
 
-@media only screen and (min-width: 921px) {
+@media only screen and (min-width: 821px) {
+  .formContainer {
+    min-width: 400px;
+  }
 
-  /* .resultCard {
-    min-width: 140px;
-    min-height: 140px;
-  } */
-
-  /* .resultCardTitle {
-    font-size: inherit;
-  } */
-
-  /* .resultCardResult {
-    font-size: 3rem;
-  } */
+  .calculateBtn {
+    max-width: 400px;
+  }
 }

@@ -65,30 +65,28 @@ const NameNumerologyCalculator = () => {
         {/* Form */}
         <div className={styles.formContainer}>
           {/* Input Field + Label */}
-          <div>
-            <div className={styles.nameLabel}>Enter your full name</div>
-            <TextInput
-              className={styles.textInput}
-              value={name || ""}
-              onChange={handleNameChange}
-            />
+          <div className={styles.label}>Enter your full name</div>
+          <TextInput
+            className={styles.textInput}
+            value={name || ""}
+            onChange={handleNameChange}
+          />
 
-            {/* System */}
-            <div>
-              <div className={styles.systemLabel}>System</div>
-              <div className={styles.systemOptionContainer}>
-                <div
-                  className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
-                  onClick={() => handleSystemChange("pythagorean")}
-                >
-                  Pythagorean
-                </div>
-                <div
-                  className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
-                  onClick={() => handleSystemChange("chaldean")}
-                >
-                  Chaldean
-                </div>
+          {/* System */}
+          <div>
+            <div className={styles.label}>System</div>
+            <div className={styles.systemOptionContainer}>
+              <div
+                className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
+                onClick={() => handleSystemChange("pythagorean")}
+              >
+                Pythagorean
+              </div>
+              <div
+                className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
+                onClick={() => handleSystemChange("chaldean")}
+              >
+                Chaldean
               </div>
             </div>
           </div>
@@ -104,6 +102,7 @@ const NameNumerologyCalculator = () => {
           <div className={styles.resultContainer}>
             <ResultCard title="Name to number" result={nameToNumber} />
             <ResultCard title="Soul number" result={soulNumber} />
+            {/* <ResultCard title="Name to number" result={nameToNumber} /> */}
           </div>
         )}
       </div>

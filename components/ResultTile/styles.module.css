@@ -1,16 +1,5 @@
-/* Define CSS variables for colors */
-:root {
-  --primary-color: rgb(189, 58, 80);
-  --primary-color-hover: rgb(88, 25, 25);
-  --secondary-color: green;
-  --text-color: black;
-  --background-color: #fbfaef;
-  --gold-color: gold;
-  --gray-color: gray;
-}
-
 .resultTile {
-  background-color: var(--gold-color);
+  background-color: gold;
   width: calc(33.33% - 0px);
   aspect-ratio: 1 / 1;
   min-width: 155px;
@@ -41,7 +30,7 @@
   justify-content: center;
   font-size: max(3.5vw, 4em);
   font-weight: bold;
-  background-color: var(--background-color);
+  background-color: #fbfaef;
 }
 
 @media only screen and (max-width: 480px) {

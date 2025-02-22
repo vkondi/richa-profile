@@ -129,7 +129,7 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 480px) {
   .container {
     flex-direction: column;
     margin: 0 5vw;
@@ -153,17 +153,8 @@
   }
 
   .resultCard {
-    background-color: gold;
-    width: 15vw;
-    height: 15vw;
-    max-width: 220px;
-    max-height: 220px;
     min-width: 140px;
     min-height: 140px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
   }
 
   .resultCardTitle {
@@ -173,4 +164,57 @@
   .resultCardResult {
     font-size: 3rem;
   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 920px) {
+  /* .container {
+    flex-direction: column;
+    margin: 0 5vw;
+    padding: 20px 0px;
+  } */
+
+  /* .textInput {
+    width: 100%;
+  } */
+
+  /* .nameLabel {
+    font-size: inherit;
+  } */
+
+  /* .calculateBtn {
+    font-size: inherit;
+  } */
+
+  /* .systemLabel {
+    font-size: inherit;
+  } */
+
+  /* .resultCard {
+    min-width: 140px;
+    min-height: 140px;
+  } */
+
+  /* .resultCardTitle {
+    font-size: inherit;
+  } */
+
+  /* .resultCardResult {
+    font-size: 3rem;
+  } */
+}
+
+@media only screen and (min-width: 921px) {
+
+  /* .resultCard {
+    min-width: 140px;
+    min-height: 140px;
+  } */
+
+  /* .resultCardTitle {
+    font-size: inherit;
+  } */
+
+  /* .resultCardResult {
+    font-size: 3rem;
+  } */
 }

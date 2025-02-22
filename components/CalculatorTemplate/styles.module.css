@@ -1,4 +1,4 @@
-.calculator-logo-container {
+.calculatorLogoContainer {
   font-size: 1.2rem;
   line-height: 1.4rem;
   border: 1px solid #626262;
@@ -19,14 +19,14 @@
   font-weight: 400;
 }
 
-.calculator-logo-container:hover {
+.calculatorLogoContainer:hover {
   transform: scale(1.05);
   background: linear-gradient(to left, #1a1a1a, #333333, #4d4d4d, #666666);
   color: white;
 }
 
 @media only screen and (max-width: 480px) {
-  .calculator-logo-container {
+  .calculatorLogoContainer {
     width: 23vw;
     height: 23vw;
     font-size: 0.7rem;
@@ -35,7 +35,7 @@
 }
 
 @media only screen and (min-width: 481px) and (max-width: 920px) {
-  .calculator-logo-container {
+  .calculatorLogoContainer {
     width: 23vw;
     height: 23vw;
     font-size: 1rem;
@@ -43,14 +43,14 @@
 }
 
 @media only screen and (min-width: 921px) {
-  .calculator-logo-container {
+  .calculatorLogoContainer {
     width: 15vw;
     height: 15vw;
     font-size: 1.2rem;
   }
 }
 
-.calculator-template-top-div {
+.calculatorTemplateTopDiv {
   width: 100%;
   height: 200px;
   background: linear-gradient(to right, #5e5eed, #1cd8d9, #00a900);
@@ -62,12 +62,12 @@
   text-align: center;
 }
 
-.calculator-template-middle-div {
+.calculatorTemplateMiddleDiv {
   flex: 1;
   overflow: auto;
 }
 
-.calculator-template-bottom-div {
+.calculatorTemplateBottomDiv {
   width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;

@@ -1,8 +1,8 @@
-import "./styles.css";
+import styles from "./styles.module.css";
 
 export default function UnderConstruction({ label }: { label?: string }) {
   return (
-    <div className="container">
+    <div className={styles.container}>
       {/* Icon */}
       <svg
         xmlns="http://www.w3.org/2000/svg"

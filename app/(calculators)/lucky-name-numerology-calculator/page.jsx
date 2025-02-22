@@ -1,11 +1,11 @@
-import CalculatorTemplate from "@/components/CalculatorTemplate";
+import CalculatorWrapper from "@/components/CalculatorWrapper";
 import UnderConstruction from "@/components/UnderConstruction";
 
 const LuckyNameNumerology = () => {
   return (
-    <CalculatorTemplate label="Lucky Name Numerology Calculator">
+    <CalculatorWrapper label="Lucky Name Numerology Calculator">
       <UnderConstruction label="Coming soon..." />
-    </CalculatorTemplate>
+    </CalculatorWrapper>
   );
 };
 

@@ -1,0 +1,147 @@
+.container {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 10vw;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 30%;
+}
+
+.textInput {
+  height: 50px;
+  padding: 0.5rem;
+  letter-spacing: 1px;
+  border: 1px solid gray;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.label {
+  color: black;
+  font-size: max(1.1vw, 1em);
+  margin-top: 20px;
+}
+
+.calculateBtn {
+  color: white;
+  font-size: max(1.2vw, 1.6em);
+  font-weight: 600;
+  padding: 0.6em 1em;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  background-color: rgb(189, 58, 80);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.calculateBtn:hover {
+  background-color: rgb(88, 25, 25);
+}
+
+.systemOptionContainer {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid green;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.systemOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+  font-size: max(1.1vw, 1.3em);
+}
+
+.systemOptionSelected {
+  background-color: green;
+  color: white;
+}
+
+.resultContainer {
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  display: flex;
+  column-gap: 20px;
+  row-gap: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    margin: 0 2vw;
+  }
+
+  .label {
+    font-size: max(0.6vw, 0.8em);
+  }
+
+  .systemOption {
+    font-size: max(0.8vw, 1em);
+  }
+
+  .calculateBtn {
+    font-size: max(0.9vw, 1.1em);
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 820px) {
+  .container {
+    margin: 0 5vw;
+  }
+
+  .formContainer {
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .label {
+    font-size: max(0.9vw, 1em);
+  }
+
+  .systemOption {
+    font-size: max(1.1vw, 1.1em);
+  }
+
+  .calculateBtn {
+    font-size: max(1.3vw, 1.3em);
+  }
+}
+
+@media only screen and (min-width: 821px) {
+  .formContainer {
+    min-width: 400px;
+  }
+
+  .calculateBtn {
+    max-width: 400px;
+  }
+}

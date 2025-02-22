@@ -1,5 +1,5 @@
 "use client";
-// CalculatorTemplate.jsx
+// CalculatorWrapper.jsx
 
 import React, { FC, PropsWithChildren, useCallback } from "react";
 import { usePathname } from "next/navigation";
@@ -8,22 +8,21 @@ import CalculatorLogo from "./CalculatorLogo";
 
 import { CALCULATOR_LINKS } from "@utils/constants";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
-interface CalculatorTemplateProps {
+interface CalculatorWrapperProps {
   label: string;
 }
 
-const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
+const CalculatorWrapper: FC<PropsWithChildren<CalculatorWrapperProps>> = ({
   label,
   children,
 }) => {
   const pathname = usePathname();
-  console.log("pathname: ", pathname);
 
   const renderBottomNavLinks = useCallback(() => {
     return CALCULATOR_LINKS.filter(
-      (link) => link.href.indexOf(pathname) === -1,
+      (link) => link.href.indexOf(pathname) === -1
     ).map((link) => {
       return (
         <CalculatorLogo
@@ -39,17 +38,17 @@ const CalculatorTemplate: FC<PropsWithChildren<CalculatorTemplateProps>> = ({
   return (
     <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
       {/* Top Div */}
-      <div className="calculator-template-top-div">{label}</div>
+      <div className={styles.calculatorTemplateTopDiv}>{label}</div>
 
       {/* Middle Div */}
-      <div className="calculator-template-middle-div">{children}</div>
+      <div className={styles.calculatorTemplateMiddleDiv}>{children}</div>
 
       {/* Bottom Div */}
-      <div className="calculator-template-bottom-div">
+      <div className={styles.calculatorTemplateBottomDiv}>
         {renderBottomNavLinks()}
       </div>
     </div>
   );
 };
 
-export default CalculatorTemplate;
+export default CalculatorWrapper;

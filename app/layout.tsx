@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { HEADER_MENU_ITEMS } from "@/utils/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
+        <Header title="Vagmi Richa Vishwajiet" menuItems={HEADER_MENU_ITEMS}/>
         {children}
       </body>
     </html>

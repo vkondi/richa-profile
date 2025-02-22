@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const CALCULATOR_LINKS = [
   {
     href: "/name-numerology-calculator",
@@ -85,3 +87,16 @@ export const CHALDEAN_MAPPING: Record<string, number> = {
   Y: 1,
   Z: 7,
 };
+
+export const APP_TITLE = "Vagmi Richa Vishwajiet";
+
+export const HEADER_MENU_ITEMS = [
+  {
+    title: "Calculator",
+    items: CALCULATOR_LINKS.map((rec) => ({ ...rec, title: rec["label"] })),
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+];

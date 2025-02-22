@@ -13,9 +13,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "add": "^2.0.6",
     "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-datepicker": "^8.1.0",
+    "react-dom": "^19.0.0",
+    "react-responsive": "^10.0.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

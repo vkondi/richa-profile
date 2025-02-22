@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 import { useCallback, useEffect, useState } from "react";
 
 type CalculatorLogoProps = {
@@ -47,7 +47,7 @@ const CalculatorLogo = ({ href, label, logoUrl }: CalculatorLogoProps) => {
   const { width, height } = getImageDimensions();
 
   return (
-    <Link href={href} className="calculator-logo-container">
+    <Link href={href} className={styles.calculatorLogoContainer}>
       <Image
         src={logoUrl}
         alt={label}

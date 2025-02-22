@@ -1,11 +1,11 @@
-import CalculatorTemplate from "@/components/CalculatorTemplate";
+import CalculatorWrapper from "@/components/CalculatorWrapper";
 import UnderConstruction from "@/components/UnderConstruction";
 
 const PerrsonalYearCalculator = () => {
   return (
-    <CalculatorTemplate label="Personal Year Calculator">
+    <CalculatorWrapper label="Personal Year Calculator">
       <UnderConstruction label="Coming soon..." />
-    </CalculatorTemplate>
+    </CalculatorWrapper>
   );
 };
 

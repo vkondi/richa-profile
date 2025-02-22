@@ -1,13 +1,11 @@
 "use client";
 
+import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
 import CalculatorTemplate from "@/components/CalculatorTemplate";
 import TextInput from "@/components/TextInput/TextInput";
-
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
-
-import styles from "./styles.module.css";
-import { ChangeEvent, useState } from "react";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
+import styles from "./styles.module.css";
 
 type ResultCardProps = {
   title: string;
@@ -16,48 +14,50 @@ type ResultCardProps = {
 
 type SystemType = "chaldean" | "pythagorean";
 
-const ResultCard = ({ title, result }: ResultCardProps) => {
-  return (
-    <div className={styles.resultCard}>
-      <div className={styles.resultCardTitle}>{title}</div>
-      <div className={styles.resultCardResult}>{result}</div>
-    </div>
-  );
-};
+const ResultCard: React.FC<ResultCardProps> = ({ title, result }) => (
+  <div className={styles.resultCard}>
+    <div className={styles.resultCardTitle}>{title}</div>
+    <div className={styles.resultCardResult}>{result}</div>
+  </div>
+);
 
-const NameNumerologyCalculator = () => {
+const NameNumerologyCalculator: React.FC = () => {
   const [system, setSystem] = useState<SystemType>("pythagorean");
   const [name, setName] = useState<string | undefined>();
-  const [soulNumber, setSoulNumber] = useState<number | undefined>();
-  const [nameToNumber, setNameToNumber] = useState<number | undefined>();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
-  const handleCalculate = () => {
+  const handleCalculate = useCallback(() => {
     if (name) {
-      setNameToNumber(
-        convertNameToNumber(
-          name,
-          system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
-        )
-      );
-      setSoulNumber(getSoulUrgeNumber(name, system));
       setResultVisibility(true);
     }
-  };
+  }, [name]);
 
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    setSoulNumber(undefined);
-    setNameToNumber(undefined);
     setResultVisibility(false);
-  };
+  }, []);
 
-  const handleSystemChange = (value: SystemType) => {
+  const handleSystemChange = useCallback((value: SystemType) => {
     setSystem(value);
-    setSoulNumber(undefined);
-    setNameToNumber(undefined);
     setResultVisibility(false);
-  };
+  }, []);
+
+  const nameToNumber = useMemo(() => {
+    if (name) {
+      return convertNameToNumber(
+        name,
+        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
+      );
+    }
+    return undefined;
+  }, [name, system]);
+
+  const soulNumber = useMemo(() => {
+    if (name) {
+      return getSoulUrgeNumber(name, system);
+    }
+    return undefined;
+  }, [name, system]);
 
   return (
     <CalculatorTemplate label="Name Numerology Calculator">
@@ -73,21 +73,19 @@ const NameNumerologyCalculator = () => {
           />
 
           {/* System */}
-          <div>
-            <div className={styles.label}>System</div>
-            <div className={styles.systemOptionContainer}>
-              <div
-                className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
-                onClick={() => handleSystemChange("pythagorean")}
-              >
-                Pythagorean
-              </div>
-              <div
-                className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
-                onClick={() => handleSystemChange("chaldean")}
-              >
-                Chaldean
-              </div>
+          <div className={styles.label}>System</div>
+          <div className={styles.systemOptionContainer}>
+            <div
+              className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
+              onClick={() => handleSystemChange("pythagorean")}
+            >
+              Pythagorean
+            </div>
+            <div
+              className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
+              onClick={() => handleSystemChange("chaldean")}
+            >
+              Chaldean
             </div>
           </div>
 
@@ -102,7 +100,6 @@ const NameNumerologyCalculator = () => {
           <div className={styles.resultContainer}>
             <ResultCard title="Name to number" result={nameToNumber} />
             <ResultCard title="Soul number" result={soulNumber} />
-            {/* <ResultCard title="Name to number" result={nameToNumber} /> */}
           </div>
         )}
       </div>

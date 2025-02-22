@@ -1,3 +1,14 @@
+/* Define CSS variables for colors */
+:root {
+  --primary-color: rgb(189, 58, 80);
+  --primary-color-hover: rgb(88, 25, 25);
+  --secondary-color: green;
+  --text-color: black;
+  --background-color: #fbfaef;
+  --gold-color: gold;
+  --gray-color: gray;
+}
+
 .container {
   box-sizing: border-box;
   max-width: 100%;
@@ -8,7 +19,6 @@
 }
 
 .formContainer {
-  /* background-color: skyblue; */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -19,13 +29,13 @@
   height: 50px;
   padding: 0.5rem;
   letter-spacing: 1px;
-  border: 1px solid gray;
+  border: 1px solid var(--gray-color);
   border-radius: 25px;
   margin-top: 10px;
 }
 
 .label {
-  color: black;
+  color: var(--text-color);
   font-size: max(1.1vw, 1em);
   margin-top: 20px;
 }
@@ -37,22 +47,23 @@
   padding: 0.6em 1em;
   letter-spacing: 1px;
   border-radius: 20px;
-  background-color: rgb(189, 58, 80);
+  background-color: var(--primary-color);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 3rem 0rem;
+  margin: 3rem 0;
+  transition: background-color 0.3s ease;
 }
 
 .calculateBtn:hover {
-  background-color: rgb(88, 25, 25);
+  background-color: var(--primary-color-hover);
 }
 
 .systemOptionContainer {
   display: flex;
   flex-direction: row;
-  border: 1px solid green;
+  border: 1px solid var(--secondary-color);
   border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
@@ -69,7 +80,7 @@
 }
 
 .systemOptionSelected {
-  background-color: green;
+  background-color: var(--secondary-color);
   color: white;
 }
 
@@ -80,10 +91,9 @@
   display: flex;
   column-gap: 20px;
   row-gap: 20px;
-  /* background-color: lightgrey; */
   animation: fadeIn 0.5s ease-in-out;
   flex-wrap: wrap;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 @keyframes fadeIn {
@@ -96,13 +106,12 @@
 }
 
 .resultCard {
-  background-color: gold;
+  background-color: var(--gold-color);
   width: calc(33.33% - 0px);
   aspect-ratio: 1 / 1;
   min-width: 155px;
   max-width: 320px;
   border-radius: 10px;
-  /* border: 1px solid gold; */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -112,7 +121,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0px;
+  padding: 10px 0;
   font-size: max(1.1vw, 1.3em);
   white-space: nowrap;
   text-overflow: unset;
@@ -123,13 +132,12 @@
 .resultCardResult {
   color: #000000ab;
   flex: 1;
-  /* background-color: white; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: max(3.5vw, 4em);
   font-weight: bold;
-  background-color: #fbfaef;
+  background-color: var(--background-color);
 }
 
 @media only screen and (max-width: 480px) {

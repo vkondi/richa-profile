@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 16px 5vw;
   background-color: #1f2937; /* Dark gray */
   color: white;
   position: relative;

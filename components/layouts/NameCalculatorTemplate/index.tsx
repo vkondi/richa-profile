@@ -5,13 +5,14 @@ import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import TextInput from "@/components/TextInput/TextInput";
 import styles from "./styles.module.css";
 import { SystemType } from "@/types/types";
+import SystemField from "@/components/SystemField";
 
 type NameCalculatorTemplateProps = {
   title: string;
   onCalculateClick: MouseEventHandler<HTMLDivElement>;
   name: string | undefined;
   onNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  system: string | undefined;
+  system: SystemType | undefined;
   onSystemChange: (arg0: SystemType) => void;
   ResultTiles: ReactElement<unknown, string>;
   resultVisibility: boolean;
@@ -41,21 +42,7 @@ const NameCalculatorTemplate: FC<NameCalculatorTemplateProps> = ({
           />
 
           {/* System */}
-          <div className={styles.label}>System</div>
-          <div className={styles.systemOptionContainer}>
-            <div
-              className={`${styles.systemOption} ${system === "pythagorean" ? styles.systemOptionSelected : ""}`}
-              onClick={() => onSystemChange("pythagorean")}
-            >
-              Pythagorean
-            </div>
-            <div
-              className={`${styles.systemOption} ${system === "chaldean" ? styles.systemOptionSelected : ""}`}
-              onClick={() => onSystemChange("chaldean")}
-            >
-              Chaldean
-            </div>
-          </div>
+          <SystemField onSelect={onSystemChange} selectedValue={system} />
 
           {/* Calculate button */}
           <div className={styles.calculateBtn} onClick={onCalculateClick}>

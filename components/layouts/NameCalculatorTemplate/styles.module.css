@@ -45,30 +45,6 @@
   transition: background-color 0.3s ease;
 }
 
-.systemOptionContainer {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid green;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.systemOption {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  padding: 10px;
-  font-size: max(1.1vw, 1.3em);
-}
-
-.systemOptionSelected {
-  background-color: green;
-  color: white;
-}
-
 .resultContainer {
   justify-content: center;
   align-items: center;
@@ -100,10 +76,6 @@
     font-size: max(0.6vw, 0.8em);
   }
 
-  .systemOption {
-    font-size: max(0.8vw, 1em);
-  }
-
   .calculateBtn {
     font-size: max(0.9vw, 1.1em);
   }
@@ -121,10 +93,6 @@
 
   .label {
     font-size: max(0.9vw, 1em);
-  }
-
-  .systemOption {
-    font-size: max(1.1vw, 1.1em);
   }
 
   .calculateBtn {

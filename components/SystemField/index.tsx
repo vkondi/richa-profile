@@ -12,7 +12,7 @@ export default function SystemField({
 }: SystemFieldProps) {
   return (
     <>
-      <div className={styles.label}>System</div>
+      <div className="label">System</div>
       <div className={styles.systemOptionContainer}>
         <div
           className={`${styles.systemOption} ${selectedValue === "chaldean" ? styles.systemOptionSelected : ""}`}

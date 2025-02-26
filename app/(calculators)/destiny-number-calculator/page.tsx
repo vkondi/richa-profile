@@ -3,7 +3,7 @@
 import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { getExpressionNumber } from "@utils/utility";
-import NameCalculatorTemplate from "@/components/layouts/NameCalculatorTemplate";
+import NameCalcTemplate from "@/components/layouts/NameCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
 import { SystemType } from "@/types/types";
 
@@ -17,15 +17,21 @@ const DestinyNumberCalculator: FC = () => {
     }
   }, [name]);
 
-  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    setResultVisibility(false);
-  }, []);
+  const handleNameChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setName(e.target.value);
+      setResultVisibility(false);
+    },
+    [setName]
+  );
 
-  const handleSystemChange = useCallback((value: SystemType) => {
-    setSystem(value);
-    setResultVisibility(false);
-  }, []);
+  const handleSystemChange = useCallback(
+    (value: SystemType) => {
+      setSystem(value);
+      setResultVisibility(false);
+    },
+    [setSystem]
+  );
 
   const expressionNumber = useMemo(() => {
     if (name) {
@@ -43,7 +49,7 @@ const DestinyNumberCalculator: FC = () => {
   };
 
   return (
-    <NameCalculatorTemplate
+    <NameCalcTemplate
       title="Destiny Numerology Calculator"
       onCalculateClick={handleCalculate}
       name={name}

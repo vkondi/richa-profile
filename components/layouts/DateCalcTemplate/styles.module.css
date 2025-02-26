@@ -21,9 +21,9 @@
   display: flex;
   column-gap: 20px;
   row-gap: 20px;
-  animation: fadeIn 0.5s ease-in-out;
   flex-wrap: wrap;
   padding: 10px 0;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {

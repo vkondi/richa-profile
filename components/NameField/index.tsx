@@ -9,7 +9,7 @@ type NameFieldProps = {
 export default function NameField({ value, onChange }: NameFieldProps) {
   return (
     <>
-      <div className={styles.label}>Enter your full name</div>
+      <div className="label">Enter your full name</div>
       <TextInput
         className={styles.textInput}
         value={value}

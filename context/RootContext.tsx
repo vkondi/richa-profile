@@ -15,7 +15,7 @@ type RootContextType = {
   dob?: string;
   system?: SystemType;
   setName: Dispatch<SetStateAction<string | undefined>>;
-  setDOB?: Dispatch<SetStateAction<string | undefined>>;
+  setDOB: Dispatch<SetStateAction<string | undefined>>;
   setSystem: Dispatch<SetStateAction<SystemType | undefined>>;
 };
 

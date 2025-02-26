@@ -16,7 +16,7 @@ export default function DateField({
   label = "Select Date",
   value,
   onChange,
-  placeholder = "YYYY-MM-DD",
+  placeholder = "DD-MM-YYYY",
   minDate,
   maxDate,
   className,
@@ -35,7 +35,7 @@ export default function DateField({
 
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
-      {label && <label className="text-sm font-medium">{label}</label>}
+      {label && <label className="label">{label}</label>}
       <div className="relative">
         <input
           type="date"

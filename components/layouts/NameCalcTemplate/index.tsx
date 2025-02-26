@@ -7,7 +7,7 @@ import { SystemType } from "@/types/types";
 import SystemField from "@/components/SystemField";
 import NameField from "@/components/NameField";
 
-type NameCalculatorTemplateProps = {
+type NameCalcTemplateProps = {
   title: string;
   onCalculateClick: MouseEventHandler<HTMLDivElement>;
   name: string | undefined;
@@ -18,7 +18,7 @@ type NameCalculatorTemplateProps = {
   resultVisibility: boolean;
 };
 
-const NameCalculatorTemplate: FC<NameCalculatorTemplateProps> = ({
+const NameCalcTemplate: FC<NameCalcTemplateProps> = ({
   title,
   onCalculateClick,
   name,
@@ -54,4 +54,4 @@ const NameCalculatorTemplate: FC<NameCalculatorTemplateProps> = ({
   );
 };
 
-export default NameCalculatorTemplate;
+export default NameCalcTemplate;

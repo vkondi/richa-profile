@@ -45,10 +45,6 @@
   transition: background-color 0.3s ease;
 }
 
-.calculateBtn:hover {
-  background-color: rgb(88, 25, 25);
-}
-
 .systemOptionContainer {
   display: flex;
   flex-direction: row;
@@ -143,5 +139,9 @@
 
   .calculateBtn {
     max-width: 400px;
+  }
+
+  .calculateBtn:hover {
+    background-color: rgb(88, 25, 25);
   }
 }

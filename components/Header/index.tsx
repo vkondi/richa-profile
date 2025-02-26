@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
-import styles from "./Header.module.css";
+import styles from "./styles.module.css";
 
 type MenuItem = {
   title: string;
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <header className={styles.header}>
+    <header className={styles.container}>
       <Link href="/">
         <div className={isMobile ? styles.titleCenter : styles.titleLeft}>
           {title}

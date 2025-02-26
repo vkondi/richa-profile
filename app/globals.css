@@ -5,17 +5,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --header-background: #2A4B5F;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Josefin Sans", sans-serif;
+  padding-top: 64px; /* This is to buffer space for the Header dock feature */
 }

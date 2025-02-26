@@ -4,13 +4,12 @@ import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
-import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
-
-export type SystemType = "chaldean" | "pythagorean";
+import NameCalcTemplate from "@/components/layouts/NameCalcTemplate";
+import { useRootContext } from "@/context/RootContext";
+import { SystemType } from "@/types/types";
 
 const NameNumerologyCalculator: React.FC = () => {
-  const [system, setSystem] = useState<SystemType>("pythagorean");
-  const [name, setName] = useState<string | undefined>();
+  const { name, setName, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = useCallback(() => {
@@ -19,15 +18,21 @@ const NameNumerologyCalculator: React.FC = () => {
     }
   }, [name]);
 
-  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    setResultVisibility(false);
-  }, []);
+  const handleNameChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setName(e.target.value);
+      setResultVisibility(false);
+    },
+    [setName]
+  );
 
-  const handleSystemChange = useCallback((value: SystemType) => {
-    setSystem(value);
-    setResultVisibility(false);
-  }, []);
+  const handleSystemChange = useCallback(
+    (value: SystemType) => {
+      setSystem(value);
+      setResultVisibility(false);
+    },
+    [setSystem]
+  );
 
   const nameToNumber = useMemo(() => {
     if (name) {
@@ -56,7 +61,7 @@ const NameNumerologyCalculator: React.FC = () => {
   };
 
   return (
-    <NameCalculatorTemplate
+    <NameCalcTemplate
       title="Name Numerology Calculator"
       onCalculateClick={handleCalculate}
       name={name}

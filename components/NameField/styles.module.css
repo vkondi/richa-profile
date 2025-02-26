@@ -1,0 +1,8 @@
+.textInput {
+  height: 50px;
+  padding: 0.5rem;
+  letter-spacing: 1px;
+  border: 1px solid gray;
+  border-radius: .5rem;
+  margin-top: 10px;
+}

@@ -6,7 +6,7 @@ type ResultTileProps = {
 };
 
 const ResultTile: React.FC<ResultTileProps> = ({ title, result }) => (
-  <div className={styles.resultTile}>
+  <div className={`${styles.resultTile} boxShadow`}>
     <div className={styles.resultTileTitle}>{title}</div>
     <div className={styles.resultTileResult}>{result}</div>
   </div>

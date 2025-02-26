@@ -12,15 +12,16 @@ export const CALCULATOR_LINKS = [
     logoUrl: "/images/destiny-number.svg",
   },
   {
+    href: "/life-path-number",
+    label: "Life Path Number",
+    logoUrl: "/images/life-path.svg",
+  },
+  {
     href: "/personal-year-calculator",
     label: "Personal Year",
     logoUrl: "/images/personal-year.svg",
   },
-  {
-    href: "/personal-month-calculator",
-    label: "Personal Month",
-    logoUrl: "/images/personal-month.svg",
-  },
+
   {
     href: "/lucky-name-numerology-calculator",
     label: "Lucky Name",

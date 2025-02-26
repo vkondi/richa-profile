@@ -47,7 +47,7 @@ const CalculatorLogo = ({ href, label, logoUrl }: CalculatorLogoProps) => {
   const { width, height } = getImageDimensions();
 
   return (
-    <Link href={href} className={styles.calculatorLogoContainer}>
+    <Link href={href} className={`${styles.calculatorLogoContainer} boxShadow`}>
       <Image
         src={logoUrl}
         alt={label}

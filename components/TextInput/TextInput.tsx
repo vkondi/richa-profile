@@ -1,13 +1,13 @@
-import React from "react";
+import { ChangeEvent, CSSProperties, FC } from "react";
 
 interface TextInputProps {
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  customStyles?: React.CSSProperties;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  customStyles?: CSSProperties;
   className?: string;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput: FC<TextInputProps> = ({
   value,
   onChange,
   customStyles,

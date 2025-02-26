@@ -75,7 +75,9 @@ export const getBirthDayNumber = (day: number): number => {
 };
 
 // Calculate Life Path Number from Birth Date (DD/MM/YYYY)
-export const getLifePathNumber = (dateString: string): number => {
+export const getLifePathNumber = (dateString: string): number | string => {
+  if (!dateString) return dateString;
+
   const digits = dateString
     .replace(/[^0-9]/g, "")
     .split("")

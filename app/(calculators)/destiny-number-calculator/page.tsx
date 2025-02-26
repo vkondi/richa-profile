@@ -3,12 +3,12 @@
 import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { getExpressionNumber } from "@utils/utility";
-import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
-import { SystemType } from "../name-numerology-calculator/page";
+import NameCalcTemplate from "@/components/layouts/NameCalcTemplate";
+import { useRootContext } from "@/context/RootContext";
+import { SystemType } from "@/types/types";
 
 const DestinyNumberCalculator: FC = () => {
-  const [system, setSystem] = useState<SystemType>("pythagorean");
-  const [name, setName] = useState<string | undefined>();
+  const { name, setName, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = useCallback(() => {
@@ -17,15 +17,21 @@ const DestinyNumberCalculator: FC = () => {
     }
   }, [name]);
 
-  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    setResultVisibility(false);
-  }, []);
+  const handleNameChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setName(e.target.value);
+      setResultVisibility(false);
+    },
+    [setName]
+  );
 
-  const handleSystemChange = useCallback((value: SystemType) => {
-    setSystem(value);
-    setResultVisibility(false);
-  }, []);
+  const handleSystemChange = useCallback(
+    (value: SystemType) => {
+      setSystem(value);
+      setResultVisibility(false);
+    },
+    [setSystem]
+  );
 
   const expressionNumber = useMemo(() => {
     if (name) {
@@ -43,7 +49,7 @@ const DestinyNumberCalculator: FC = () => {
   };
 
   return (
-    <NameCalculatorTemplate
+    <NameCalcTemplate
       title="Destiny Numerology Calculator"
       onCalculateClick={handleCalculate}
       name={name}

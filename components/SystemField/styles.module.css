@@ -1,0 +1,37 @@
+.systemOptionContainer {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid green;
+  border-radius: .5rem;
+  overflow: hidden;
+  margin-top: 10px;
+  background-color: white;
+  color: green;
+}
+
+.systemOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+  font-size: max(1.1vw, 1.3em);
+}
+
+.systemOptionSelected {
+  background-color: green;
+  color: white;
+}
+
+@media only screen and (max-width: 480px) {
+  .systemOption {
+    font-size: max(0.8vw, 1em);
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 820px) {
+  .systemOption {
+    font-size: max(1.1vw, 1.1em);
+  }
+}

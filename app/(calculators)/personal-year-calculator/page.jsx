@@ -1,5 +1,5 @@
-import CalculatorWrapper from "@/components/CalculatorWrapper";
-import UnderConstruction from "@/components/UnderConstruction";
+import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
+import UnderConstruction from "@/components/layouts/UnderConstruction";
 
 const PerrsonalYearCalculator = () => {
   return (

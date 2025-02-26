@@ -4,7 +4,7 @@ import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
-import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
+import NameCalculatorTemplate from "@/components/layouts/NameCalculatorTemplate";
 import { useRootContext } from "@/context/RootContext";
 import { SystemType } from "@/types/types";
 

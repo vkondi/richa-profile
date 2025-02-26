@@ -3,7 +3,7 @@
 import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { getExpressionNumber } from "@utils/utility";
-import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
+import NameCalculatorTemplate from "@/components/layouts/NameCalculatorTemplate";
 import { useRootContext } from "@/context/RootContext";
 import { SystemType } from "@/types/types";
 

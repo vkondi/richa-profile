@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, FC, MouseEventHandler, ReactElement } from "react";
-import CalculatorWrapper from "@/components/CalculatorWrapper";
+import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import TextInput from "@/components/TextInput/TextInput";
 import styles from "./styles.module.css";
 import { SystemType } from "@/types/types";

@@ -16,17 +16,6 @@ export const CALCULATOR_LINKS = [
     label: "Life Path Number",
     logoUrl: "/images/life-path.svg",
   },
-  {
-    href: "/personal-year-calculator",
-    label: "Personal Year",
-    logoUrl: "/images/personal-year.svg",
-  },
-
-  {
-    href: "/lucky-name-numerology-calculator",
-    label: "Lucky Name",
-    logoUrl: "/images/lucky-name.svg",
-  },
 ];
 
 // Pythagorean Numerology Mapping (A-Z → 1-9)

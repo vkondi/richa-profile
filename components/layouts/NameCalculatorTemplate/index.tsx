@@ -2,10 +2,10 @@
 
 import React, { ChangeEvent, FC, MouseEventHandler, ReactElement } from "react";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
-import TextInput from "@/components/TextInput/TextInput";
 import styles from "./styles.module.css";
 import { SystemType } from "@/types/types";
 import SystemField from "@/components/SystemField";
+import NameField from "@/components/NameField";
 
 type NameCalculatorTemplateProps = {
   title: string;
@@ -34,18 +34,13 @@ const NameCalculatorTemplate: FC<NameCalculatorTemplateProps> = ({
         {/* Form */}
         <div className={styles.formContainer}>
           {/* Input Field + Label */}
-          <div className={styles.label}>Enter your full name</div>
-          <TextInput
-            className={styles.textInput}
-            value={name || ""}
-            onChange={onNameChange}
-          />
+          <NameField value={name || ""} onChange={onNameChange} />
 
           {/* System */}
           <SystemField onSelect={onSystemChange} selectedValue={system} />
 
           {/* Calculate button */}
-          <div className={styles.calculateBtn} onClick={onCalculateClick}>
+          <div className="calculateBtn" onClick={onCalculateClick}>
             CALCULATE
           </div>
         </div>

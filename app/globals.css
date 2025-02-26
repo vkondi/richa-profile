@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --header-background: #2A4B5F;
+  --header-background: #2a4b5f;
 }
 
 body {
@@ -13,4 +13,38 @@ body {
   background: var(--background);
   font-family: "Josefin Sans", sans-serif;
   padding-top: 64px; /* This is to buffer space for the Header dock feature */
+}
+
+.calculateBtn {
+  color: white;
+  font-size: max(1.2vw, 1.6em);
+  font-weight: 600;
+  padding: 0.6em 1em;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  background-color: rgb(189, 58, 80);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  transition: background-color 0.3s ease;
+}
+
+@media only screen and (max-width: 480px) {
+  .calculateBtn {
+    font-size: max(0.9vw, 1.1em);
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 820px) {
+  .calculateBtn {
+    font-size: max(1.3vw, 1.3em);
+  }
+}
+
+@media only screen and (min-width: 821px) {
+  .calculateBtn:hover {
+    background-color: rgb(88, 25, 25);
+  }
 }

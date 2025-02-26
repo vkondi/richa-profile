@@ -1,0 +1,26 @@
+.textInput {
+  height: 50px;
+  padding: 0.5rem;
+  letter-spacing: 1px;
+  border: 1px solid gray;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.label {
+  color: black;
+  font-size: max(1.1vw, 1em);
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .label {
+    font-size: max(0.6vw, 0.8em);
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 820px) {
+  .label {
+    font-size: max(0.9vw, 1em);
+  }
+}

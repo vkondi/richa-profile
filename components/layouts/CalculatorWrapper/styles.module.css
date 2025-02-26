@@ -58,7 +58,7 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 24px;
+  font-size: max(3vw, 2em);
   text-align: center;
 }
 

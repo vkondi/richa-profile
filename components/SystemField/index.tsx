@@ -15,16 +15,16 @@ export default function SystemField({
       <div className={styles.label}>System</div>
       <div className={styles.systemOptionContainer}>
         <div
-          className={`${styles.systemOption} ${selectedValue === "pythagorean" ? styles.systemOptionSelected : ""}`}
-          onClick={() => onSelect("pythagorean")}
-        >
-          Pythagorean
-        </div>
-        <div
           className={`${styles.systemOption} ${selectedValue === "chaldean" ? styles.systemOptionSelected : ""}`}
           onClick={() => onSelect("chaldean")}
         >
           Chaldean
+        </div>
+        <div
+          className={`${styles.systemOption} ${selectedValue === "pythagorean" ? styles.systemOptionSelected : ""}`}
+          onClick={() => onSelect("pythagorean")}
+        >
+          Pythagorean
         </div>
       </div>
     </>

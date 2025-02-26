@@ -4,11 +4,11 @@ import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { getExpressionNumber } from "@utils/utility";
 import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
-import { SystemType } from "../name-numerology-calculator/page";
+import { useRootContext } from "@/context/RootContext";
+import { SystemType } from "@/types/types";
 
 const DestinyNumberCalculator: FC = () => {
-  const [system, setSystem] = useState<SystemType>("pythagorean");
-  const [name, setName] = useState<string | undefined>();
+  const { name, setName, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = useCallback(() => {

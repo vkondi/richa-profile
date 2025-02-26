@@ -4,7 +4,7 @@ import React, { ChangeEvent, FC, MouseEventHandler, ReactElement } from "react";
 import CalculatorWrapper from "@/components/CalculatorWrapper";
 import TextInput from "@/components/TextInput/TextInput";
 import styles from "./styles.module.css";
-import { SystemType } from "@/app/(calculators)/name-numerology-calculator/page";
+import { SystemType } from "@/types/types";
 
 type NameCalculatorTemplateProps = {
   title: string;

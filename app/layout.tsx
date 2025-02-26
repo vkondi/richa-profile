@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { HEADER_MENU_ITEMS } from "@/utils/constants";
+import { RootProvider } from "@/context/RootContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header title="Vagmi Richa Vishwajiet" menuItems={HEADER_MENU_ITEMS}/>
-        {children}
+        <RootProvider>
+          <Header
+            title="Vagmi Richa Vishwajiet"
+            menuItems={HEADER_MENU_ITEMS}
+          />
+          {children}
+        </RootProvider>
       </body>
     </html>
   );

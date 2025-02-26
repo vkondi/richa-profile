@@ -5,12 +5,11 @@ import ResultTile from "@/components/ResultTile";
 import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
 import NameCalculatorTemplate from "@/components/NameCalculatorTemplate";
-
-export type SystemType = "chaldean" | "pythagorean";
+import { useRootContext } from "@/context/RootContext";
+import { SystemType } from "@/types/types";
 
 const NameNumerologyCalculator: React.FC = () => {
-  const [system, setSystem] = useState<SystemType>("pythagorean");
-  const [name, setName] = useState<string | undefined>();
+  const { name, setName, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = useCallback(() => {

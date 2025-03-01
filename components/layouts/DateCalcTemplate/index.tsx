@@ -12,9 +12,10 @@ type DateCalcTemplateProps = {
   onCalculateClick: MouseEventHandler<HTMLDivElement>;
   dob: string | undefined;
   onDOBChange: (date: string) => void;
+  dobLabel?: string;
   systemVisibility?: boolean;
-  system: SystemType | undefined;
-  onSystemChange: (arg0: SystemType) => void;
+  system?: SystemType | undefined;
+  onSystemChange?: (arg0: SystemType) => void;
   ResultTiles: ReactElement<unknown, string>;
   resultVisibility: boolean;
 };
@@ -24,6 +25,7 @@ const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
   onCalculateClick,
   dob,
   onDOBChange,
+  dobLabel,
   systemVisibility,
   system,
   onSystemChange,
@@ -36,10 +38,14 @@ const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
         {/* Form */}
         <div className={styles.formContainer}>
           {/* Date */}
-          <DateField value={dob} onChange={onDOBChange} />
+          <DateField
+            value={dob}
+            onChange={onDOBChange}
+            label={dobLabel ?? "Select Date of Birth"}
+          />
 
           {/* System */}
-          {systemVisibility && (
+          {systemVisibility && !!onSystemChange && (
             <SystemField onSelect={onSystemChange} selectedValue={system} />
           )}
 

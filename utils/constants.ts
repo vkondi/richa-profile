@@ -16,6 +16,11 @@ export const CALCULATOR_LINKS = [
     label: "Life Path Number",
     logoUrl: "/images/life-path.svg",
   },
+  {
+    href: "/loshu-grid",
+    label: "Lo-shu Grid",
+    logoUrl: "/images/loshu-grid.svg",
+  },
 ];
 
 // Pythagorean Numerology Mapping (A-Z → 1-9)

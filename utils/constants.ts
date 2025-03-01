@@ -2,7 +2,7 @@ export const CALCULATOR_LINKS = [
   {
     href: "/all-in-one-calculator",
     label: "All in One Calculator",
-    logoUrl: "/images/name-numerology.svg",
+    logoUrl: "/images/all-in-one.svg",
   },
   {
     href: "/name-numerology-calculator",
@@ -17,7 +17,7 @@ export const CALCULATOR_LINKS = [
   {
     href: "/personality-number",
     label: "Personality Number",
-    logoUrl: "/images/life-path.svg",
+    logoUrl: "/images/personality-number.svg",
   },
   {
     href: "/loshu-grid",

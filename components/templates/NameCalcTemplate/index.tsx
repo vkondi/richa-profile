@@ -13,7 +13,7 @@ const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
   name,
   onNameChange,
   system,
-  onSystemChange,
+  onSystemChange = () => {},
   ResultTiles,
   resultVisibility,
 }) => {
@@ -26,10 +26,7 @@ const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
           <NameField value={name || ""} onChange={onNameChange} />
 
           {/* System */}
-          <SystemField
-            onSelect={onSystemChange ?? (() => {})}
-            selectedValue={system}
-          />
+          <SystemField onSelect={onSystemChange} selectedValue={system} />
 
           {/* Calculate button */}
           <div className="calculateBtn" onClick={onCalculateClick}>

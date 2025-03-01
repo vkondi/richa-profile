@@ -12,6 +12,7 @@ import {
   convertNameToNumber,
   getBirthDayNumber,
   getDestinyNumber,
+  getSoulUrgeNumber,
 } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
 import NameDateCalcTemplate from "@/components/templates/NameDateCalcTemplate";
@@ -59,6 +60,13 @@ const NameNumerologyCalculator: React.FC = () => {
     return undefined;
   }, [name, system]);
 
+  const soulUrgeNumber = useMemo(() => {
+    if (name) {
+      return getSoulUrgeNumber(name, system);
+    }
+    return undefined;
+  }, [name, system]);
+
   const destinyNymber = useMemo(() => {
     if (dob) {
       return getDestinyNumber(dob);
@@ -78,6 +86,7 @@ const NameNumerologyCalculator: React.FC = () => {
     return (
       <>
         <ResultTile title="Name to number" result={nameToNumber} />
+        <ResultTile title="Soul urge number" result={soulUrgeNumber} />
         <ResultTile title="Destiny number" result={destinyNymber} />
         <ResultTile title="Personality number" result={personalityNumber} />
       </>
@@ -90,7 +99,7 @@ const NameNumerologyCalculator: React.FC = () => {
 
   return (
     <NameDateCalcTemplate
-      title="Name Numerology Calculator"
+      title="All in One Calculator"
       onCalculateClick={handleCalculate}
       name={name}
       onNameChange={handleNameChange}

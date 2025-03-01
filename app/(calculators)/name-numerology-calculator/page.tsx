@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, ChangeEvent, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
-import { convertNameToNumber } from "@utils/utility";
+import { convertNameToNumber, getSoulUrgeNumber } from "@utils/utility";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
 import NameCalcTemplate from "@/components/templates/NameCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
@@ -44,10 +44,18 @@ const NameNumerologyCalculator: React.FC = () => {
     return undefined;
   }, [name, system]);
 
+  const soulUrgeNumber = useMemo(() => {
+    if (name) {
+      return getSoulUrgeNumber(name, system);
+    }
+    return undefined;
+  }, [name, system]);
+
   const renderResultTiles = () => {
     return (
       <>
         <ResultTile title="Name to number" result={nameToNumber} />
+        <ResultTile title="Soul urge number" result={soulUrgeNumber} />
       </>
     );
   };

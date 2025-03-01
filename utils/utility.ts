@@ -4,7 +4,8 @@ import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "./constants";
 
 // Function to reduce a number to a single digit or Master Number (11, 22, 33)
 export const reduceToSingleDigit = (num: number): number => {
-  while (num > 9 && num !== 11 && num !== 22 && num !== 33) {
+  // while (num > 9 && num !== 11 && num !== 22 && num !== 33) {
+  while (num > 9) {
     num = num
       .toString()
       .split("")

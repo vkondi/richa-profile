@@ -3,7 +3,7 @@
 import React, { FC, useState, useCallback, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
 import { getLifePathNumber } from "@utils/utility";
-import DateCalcTemplate from "@/components/layouts/DateCalcTemplate";
+import DateCalcTemplate from "@/components/templates/DateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
 
 const DestinyNumberCalculator: FC = () => {

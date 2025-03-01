@@ -12,8 +12,8 @@ export const CALCULATOR_LINKS = [
     logoUrl: "/images/destiny-number.svg",
   },
   {
-    href: "/life-path-number",
-    label: "Life Path Number",
+    href: "/personality-number",
+    label: "Personality Number",
     logoUrl: "/images/life-path.svg",
   },
   {

@@ -3,15 +3,26 @@
 import React, { FC } from "react";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import styles from "./styles.module.css";
-import { NameCalcTemplateProps, TemplateProps } from "@/types/types";
+import {
+  DateCalcTemplateProps,
+  NameCalcTemplateProps,
+  TemplateProps,
+} from "@/types/types";
 import SystemField from "@/components/SystemField";
 import NameField from "@/components/NameField";
+import DateField from "@/components/DateField";
 
-const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
+const NameDateCalcTemplate: FC<
+  TemplateProps & NameCalcTemplateProps & DateCalcTemplateProps
+> = ({
   title,
   onCalculateClick,
   name,
   onNameChange,
+  dob,
+  onDOBChange,
+  dobLabel,
+  systemVisibility,
   system,
   onSystemChange,
   ResultTiles,
@@ -26,9 +37,15 @@ const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
           <NameField value={name || ""} onChange={onNameChange} />
 
           {/* System */}
-          <SystemField
-            onSelect={onSystemChange ?? (() => {})}
-            selectedValue={system}
+          {systemVisibility && !!onSystemChange && (
+            <SystemField onSelect={onSystemChange} selectedValue={system} />
+          )}
+
+          {/* Date */}
+          <DateField
+            value={dob}
+            onChange={onDOBChange}
+            label={dobLabel ?? "Select Date of Birth"}
           />
 
           {/* Calculate button */}
@@ -46,4 +63,4 @@ const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
   );
 };
 
-export default NameCalcTemplate;
+export default NameDateCalcTemplate;

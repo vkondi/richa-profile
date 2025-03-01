@@ -1,26 +1,13 @@
 "use client";
 
-import React, { FC, MouseEventHandler, ReactElement } from "react";
+import React, { FC } from "react";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import styles from "./styles.module.css";
-import { SystemType } from "@/types/types";
+import { DateCalcTemplateProps, TemplateProps } from "@/types/types";
 import SystemField from "@/components/SystemField";
 import DateField from "@/components/DateField";
 
-type DateCalcTemplateProps = {
-  title: string;
-  onCalculateClick: MouseEventHandler<HTMLDivElement>;
-  dob: string | undefined;
-  onDOBChange: (date: string) => void;
-  dobLabel?: string;
-  systemVisibility?: boolean;
-  system?: SystemType | undefined;
-  onSystemChange?: (arg0: SystemType) => void;
-  ResultTiles: ReactElement<unknown, string>;
-  resultVisibility: boolean;
-};
-
-const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
+const DateCalcTemplate: FC<DateCalcTemplateProps & TemplateProps> = ({
   title,
   onCalculateClick,
   dob,

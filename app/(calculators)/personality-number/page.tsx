@@ -10,7 +10,7 @@ const LifePathNumber = () => {
   const { dob, setDOB } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
-  const lifePathNumber = useMemo(() => {
+  const personalityNumber = useMemo(() => {
     if (dob) {
       return getBirthDayNumber(new Date(dob).getDate());
     }
@@ -35,7 +35,7 @@ const LifePathNumber = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Personality number" result={lifePathNumber} />
+        <ResultTile title="Personality number" result={personalityNumber} />
       </>
     );
   };

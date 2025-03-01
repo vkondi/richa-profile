@@ -75,8 +75,8 @@ export const getBirthDayNumber = (day: number): number => {
   return reduceToSingleDigit(day);
 };
 
-// Calculate Life Path Number from Birth Date (DD/MM/YYYY)
-export const getLifePathNumber = (dateString: string): number | string => {
+// Calculate Destiny Number from Birth Date (DD/MM/YYYY)
+export const getDestinyNumber = (dateString: string): number | string => {
   if (!dateString) return dateString;
 
   const digits = dateString

@@ -2,7 +2,7 @@
 
 import React, { FC, useState, useCallback, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
-import { getLifePathNumber } from "@utils/utility";
+import { getDestinyNumber } from "@utils/utility";
 import DateCalcTemplate from "@/components/templates/DateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
 
@@ -26,7 +26,7 @@ const DestinyNumberCalculator: FC = () => {
 
   const destinyNymber = useMemo(() => {
     if (dob) {
-      return getLifePathNumber(dob);
+      return getDestinyNumber(dob);
     }
     return undefined;
   }, [dob]);

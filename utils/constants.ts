@@ -1,6 +1,9 @@
-import { title } from "process";
-
 export const CALCULATOR_LINKS = [
+  {
+    href: "/all-in-one-calculator",
+    label: "All in One Calculator",
+    logoUrl: "/images/name-numerology.svg",
+  },
   {
     href: "/name-numerology-calculator",
     label: "Name Numerology",

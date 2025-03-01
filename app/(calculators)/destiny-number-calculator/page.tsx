@@ -1,61 +1,50 @@
 "use client";
 
-import React, { FC, useState, useCallback, ChangeEvent, useMemo } from "react";
+import React, { FC, useState, useCallback, useMemo } from "react";
 import ResultTile from "@/components/ResultTile";
-import { getExpressionNumber } from "@utils/utility";
-import NameCalcTemplate from "@/components/layouts/NameCalcTemplate";
+import { getDestinyNumber } from "@utils/utility";
+import DateCalcTemplate from "@/components/templates/DateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
-import { SystemType } from "@/types/types";
 
 const DestinyNumberCalculator: FC = () => {
-  const { name, setName, system, setSystem } = useRootContext();
+  const { dob, setDOB } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
   const handleCalculate = useCallback(() => {
-    if (name) {
+    if (dob) {
       setResultVisibility(true);
     }
-  }, [name]);
+  }, [dob]);
 
-  const handleNameChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setName(e.target.value);
+  const handleDOBChange = useCallback(
+    (value: string) => {
+      setDOB(value);
       setResultVisibility(false);
     },
-    [setName]
+    [setDOB]
   );
 
-  const handleSystemChange = useCallback(
-    (value: SystemType) => {
-      setSystem(value);
-      setResultVisibility(false);
-    },
-    [setSystem]
-  );
-
-  const expressionNumber = useMemo(() => {
-    if (name) {
-      return getExpressionNumber(name, system);
+  const destinyNymber = useMemo(() => {
+    if (dob) {
+      return getDestinyNumber(dob);
     }
     return undefined;
-  }, [name, system]);
+  }, [dob]);
 
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Destiny number" result={expressionNumber} />
+        <ResultTile title="Destiny number" result={destinyNymber} />
       </>
     );
   };
 
   return (
-    <NameCalcTemplate
+    <DateCalcTemplate
       title="Destiny Numerology Calculator"
       onCalculateClick={handleCalculate}
-      name={name}
-      onNameChange={handleNameChange}
-      system={system}
-      onSystemChange={handleSystemChange}
+      dob={dob}
+      onDOBChange={handleDOBChange}
       ResultTiles={renderResultTiles()}
       resultVisibility={resultVisibility}
     />

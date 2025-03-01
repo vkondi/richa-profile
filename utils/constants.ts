@@ -1,6 +1,9 @@
-import { title } from "process";
-
 export const CALCULATOR_LINKS = [
+  {
+    href: "/all-in-one-calculator",
+    label: "All in One Calculator",
+    logoUrl: "/images/all-in-one.svg",
+  },
   {
     href: "/name-numerology-calculator",
     label: "Name Numerology",
@@ -12,20 +15,14 @@ export const CALCULATOR_LINKS = [
     logoUrl: "/images/destiny-number.svg",
   },
   {
-    href: "/life-path-number",
-    label: "Life Path Number",
-    logoUrl: "/images/life-path.svg",
+    href: "/personality-number",
+    label: "Personality Number",
+    logoUrl: "/images/personality-number.svg",
   },
   {
-    href: "/personal-year-calculator",
-    label: "Personal Year",
-    logoUrl: "/images/personal-year.svg",
-  },
-
-  {
-    href: "/lucky-name-numerology-calculator",
-    label: "Lucky Name",
-    logoUrl: "/images/lucky-name.svg",
+    href: "/loshu-grid",
+    label: "Lo-shu Grid",
+    logoUrl: "/images/loshu-grid.svg",
   },
 ];
 

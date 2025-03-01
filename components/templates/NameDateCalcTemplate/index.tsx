@@ -1,29 +1,27 @@
 "use client";
 
-import React, { FC, MouseEventHandler, ReactElement } from "react";
+import React, { FC } from "react";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import styles from "./styles.module.css";
-import { SystemType } from "@/types/types";
+import {
+  DateCalcTemplateProps,
+  NameCalcTemplateProps,
+  TemplateProps,
+} from "@/types/types";
 import SystemField from "@/components/SystemField";
+import NameField from "@/components/NameField";
 import DateField from "@/components/DateField";
 
-type DateCalcTemplateProps = {
-  title: string;
-  onCalculateClick: MouseEventHandler<HTMLDivElement>;
-  dob: string | undefined;
-  onDOBChange: (date: string) => void;
-  systemVisibility?: boolean;
-  system: SystemType | undefined;
-  onSystemChange: (arg0: SystemType) => void;
-  ResultTiles: ReactElement<unknown, string>;
-  resultVisibility: boolean;
-};
-
-const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
+const NameDateCalcTemplate: FC<
+  TemplateProps & NameCalcTemplateProps & DateCalcTemplateProps
+> = ({
   title,
   onCalculateClick,
+  name,
+  onNameChange,
   dob,
   onDOBChange,
+  dobLabel,
   systemVisibility,
   system,
   onSystemChange,
@@ -35,13 +33,20 @@ const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
       <div className={styles.container}>
         {/* Form */}
         <div className={styles.formContainer}>
-          {/* Date */}
-          <DateField value={dob} onChange={onDOBChange} />
+          {/* Input Field + Label */}
+          <NameField value={name || ""} onChange={onNameChange} />
 
           {/* System */}
-          {systemVisibility && (
+          {systemVisibility && !!onSystemChange && (
             <SystemField onSelect={onSystemChange} selectedValue={system} />
           )}
+
+          {/* Date */}
+          <DateField
+            value={dob}
+            onChange={onDOBChange}
+            label={dobLabel ?? "Select Date of Birth"}
+          />
 
           {/* Calculate button */}
           <div className="calculateBtn" onClick={onCalculateClick}>
@@ -58,4 +63,4 @@ const DateCalcTemplate: FC<DateCalcTemplateProps> = ({
   );
 };
 
-export default DateCalcTemplate;
+export default NameDateCalcTemplate;

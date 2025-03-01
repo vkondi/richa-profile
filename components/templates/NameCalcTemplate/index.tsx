@@ -1,30 +1,19 @@
 "use client";
 
-import React, { ChangeEvent, FC, MouseEventHandler, ReactElement } from "react";
+import React, { FC } from "react";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import styles from "./styles.module.css";
-import { SystemType } from "@/types/types";
+import { NameCalcTemplateProps, TemplateProps } from "@/types/types";
 import SystemField from "@/components/SystemField";
 import NameField from "@/components/NameField";
 
-type NameCalcTemplateProps = {
-  title: string;
-  onCalculateClick: MouseEventHandler<HTMLDivElement>;
-  name: string | undefined;
-  onNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  system: SystemType | undefined;
-  onSystemChange: (arg0: SystemType) => void;
-  ResultTiles: ReactElement<unknown, string>;
-  resultVisibility: boolean;
-};
-
-const NameCalcTemplate: FC<NameCalcTemplateProps> = ({
+const NameCalcTemplate: FC<NameCalcTemplateProps & TemplateProps> = ({
   title,
   onCalculateClick,
   name,
   onNameChange,
   system,
-  onSystemChange,
+  onSystemChange = () => {},
   ResultTiles,
   resultVisibility,
 }) => {

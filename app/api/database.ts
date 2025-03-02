@@ -13,10 +13,6 @@ pool.on("connect", () => {
   console.log("Connected to Neon (PostgreSQL) database!");
 });
 
-pool.on("error", (err) => {
-  console.error("❌ Database connection error:", err);
-});
-
 // Global flag to ensure migration runs only once
 let isInitialized = false;
 

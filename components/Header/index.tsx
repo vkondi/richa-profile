@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import styles from "./styles.module.css";
+import { usePathname } from "next/navigation";
 
 type MenuItem = {
   title: string;
@@ -20,6 +21,8 @@ const Header: React.FC<HeaderProps> = ({
   title = "Header Title",
   menuItems = [],
 }) => {
+  const pathname = usePathname();
+
   const isMobile = useMediaQuery({ maxWidth: 768 }); // Check if the screen width is less than or equal to 768px
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to manage the drawer visibility
   const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to manage the open dropdown
@@ -57,6 +60,8 @@ const Header: React.FC<HeaderProps> = ({
   if (!hydrated) {
     return null; // Return null if not hydrated to avoid hydration mismatch
   }
+
+  if (pathname === "/login") return null;
 
   return (
     <header className={styles.container}>

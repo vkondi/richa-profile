@@ -35,6 +35,7 @@ export default function RootLayout({
             title="Vagmi Richa Vishwajiet"
             menuItems={HEADER_MENU_ITEMS}
           />
+
           {children}
         </RootProvider>
       </body>

@@ -1,11 +1,18 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
 import { useState, ChangeEvent } from "react";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>();
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
@@ -15,6 +22,36 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Login failed");
+      }
+
+      // Redirect back to callback URL after successful login
+      router.push(callbackUrl);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An error occurred during login");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,9 +92,11 @@ export default function LoginPage() {
           />
         </div>
 
+        {error && <div className={styles.error}>{error}</div>}
+
         {/* Login <button></button> */}
-        <button className={styles.button} type="submit">
-          Login
+        <button className={styles.button} type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
     </div>

@@ -22,3 +22,10 @@ export type NameCalcTemplateProps = {
   name: string | undefined;
   onNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
+
+export type SysUserModel = {
+  id: number;
+  email: string;
+  name: string;
+  password?: string;
+};

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { HEADER_MENU_ITEMS } from "@/utils/constants";
 import { RootProvider } from "@/context/RootContext";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,7 @@ export default function RootLayout({
             menuItems={HEADER_MENU_ITEMS}
           />
 
-          {children}
+          <Suspense>{children}</Suspense>
         </RootProvider>
       </body>
     </html>

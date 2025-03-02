@@ -14,7 +14,7 @@ const CalculatorWrapper: FC<PropsWithChildren<CalculatorWrapperProps>> = ({
   children,
 }) => {
   return (
-    <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
+    <div className={styles.container}>
       {/* Top Div */}
       <div className={styles.calculatorTemplateTopDiv}>{label}</div>
 

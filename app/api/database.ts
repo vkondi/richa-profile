@@ -22,6 +22,7 @@ let isInitialized = false;
 
 const initDatabase = async () => {
   if (!isInitialized) {
+    console.log("process.env.DATABASE_URL: ", process.env.DATABASE_URL);
     console.log("Running database migrations...");
     await migrate();
     isInitialized = true;

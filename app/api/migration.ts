@@ -39,17 +39,68 @@ async function seedUsers() {
   }
 }
 
+const createTable = async ({
+  name,
+  query,
+}: {
+  name: string;
+  query: string;
+}) => {
+  try {
+    await pool.query(query);
+    console.log(`${name} created successfully!`);
+  } catch (error) {
+    console.error(`Error creating table ${name}: `, error);
+  }
+};
+
 export const migrate = async () => {
   try {
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS SYS_USERS (
+    const tables = [
+      {
+        name: "SYS_USERS",
+        query: `CREATE TABLE IF NOT EXISTS SYS_USERS (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
         name TEXT NOT NULL
-      );
-    `);
-    console.log("SYS_USERS table created successfully!");
+      );`,
+      },
+      {
+        name: "INTERPRETATIONS",
+        query: `CREATE TABLE  IF NOT EXISTS INTERPRETATIONS (
+            id SERIAL PRIMARY KEY,
+            type TEXT NOT NULL,
+            number INTEGER NOT NULL,
+            description TEXT NOT NULL,
+            UNIQUE(type, number)
+        );`,
+      },
+    ];
+
+    await Promise.all(tables.map(createTable));
+
+    console.log("All tables created successfully!");
+
+    // await pool.query(`
+    //   CREATE TABLE IF NOT EXISTS SYS_USERS (
+    //     id SERIAL PRIMARY KEY,
+    //     email VARCHAR(255) UNIQUE NOT NULL,
+    //     password VARCHAR(255) NOT NULL,
+    //     name TEXT NOT NULL
+    //   );
+    // `);
+    // await pool.query(`
+    //     CREATE TABLE  IF NOT EXISTS INTERPRETATIONS (
+    //         id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //         type TEXT NOT NULL,
+    //         number INTEGER NOT NULL,
+    //         description TEXT NOT NULL,
+    //         UNIQUE(type, number)
+    //     );
+    //     `);
+
+    // console.log("SYS_USERS, INTERPRETATIONS table created successfully!");
 
     await seedUsers();
   } catch (error) {

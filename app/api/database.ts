@@ -1,23 +1,30 @@
-import path from "path";
-import sqlite3, { Database } from "better-sqlite3";
+import { Pool } from "pg";
 import { migrate } from "./migration";
 
-// Use /tmp in serverless environments (like Vercel)
-const isServerless = process.env.NEXT_RUNTIME === "edge" || process.env.VERCEL;
-export const dbPath = isServerless
-  ? "/tmp/richa_portfolio.db"
-  : path.join(process.cwd(), "richa_portfolio.db");
+const dbConfig = {
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }, // Required for Neon
+};
 
-let db: Database;
+// Create a connection pool
+const pool = new Pool(dbConfig);
 
-try {
-  db = new sqlite3(dbPath, { fileMustExist: false }); // Creates DB if it doesn't exist
-  console.log(`Connected to database at: ${dbPath}`);
+pool.on("connect", () => {
+  console.log("Connected to Neon (PostgreSQL) database!");
+});
 
-  migrate(); // Run migrations after successful connection
-} catch (error) {
-  console.error("Database connection error:", error);
-  process.exit(1); // Exit the process if the database fails to connect
-}
+// Global flag to ensure migration runs only once
+let isInitialized = false;
 
-export { db };
+const initDatabase = async () => {
+  if (!isInitialized) {
+    console.log("Running database migrations...");
+    await migrate();
+    isInitialized = true;
+    console.log("Database migrations complete.");
+  }
+};
+
+initDatabase(); // Run when server starts
+
+export { pool };

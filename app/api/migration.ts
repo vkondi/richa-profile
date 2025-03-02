@@ -1,52 +1,58 @@
-import { Database } from "better-sqlite3";
-import { db } from "./database";
+import { pool } from "./database";
 
-function seedUsers(db: Database) {
-  const existingUsers = db.prepare("SELECT * FROM SYS_USERS").all(); // Sync query
+async function seedUsers() {
+  try {
+    const { rowCount } = await pool.query("SELECT * FROM SYS_USERS");
 
-  if (existingUsers.length === 0) {
-    const users = [
-      {
-        name: "Vishwajeet",
-        password: "password123",
-        email: "vkondi@gmail.com",
-      },
-      {
-        name: "Richa",
-        password: "password123",
-        email: "richasharmak.90@gmail.com",
-      },
-    ];
+    if (rowCount === 0) {
+      const users = [
+        {
+          name: "Vishwajeet",
+          password: "password123",
+          email: "vkondi@gmail.com",
+        },
+        {
+          name: "Richa",
+          password: "password123",
+          email: "richasharmak.90@gmail.com",
+        },
+      ];
 
-    const insertUser = db.prepare(
-      `INSERT INTO SYS_USERS (name, password, email) VALUES (?, ?, ?)`
-    );
+      // Using a single INSERT query for better performance
+      const values = users
+        .map((_, i) => `($${i * 3 + 1}, $${i * 3 + 2}, $${i * 3 + 3})`)
+        .join(", ");
 
-    const insertTransaction = db.transaction(() => {
-      users.forEach((user) => {
-        insertUser.run(user.name, user.password, user.email);
-      });
-    });
+      const query = `
+        INSERT INTO SYS_USERS (name, password, email) VALUES ${values}
+      `;
 
-    insertTransaction(); // Run transaction to insert users
-    console.log("Seeded SYS_USERS table with initial users.");
+      await pool.query(
+        query,
+        users.flatMap((user) => [user.name, user.password, user.email])
+      );
+
+      console.log("Seeded SYS_USERS table with initial users.");
+    }
+  } catch (error) {
+    console.error("Error seeding users:", error);
   }
 }
 
-export const migrate = () => {
+export const migrate = async () => {
   try {
-    db.exec(`
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS SYS_USERS (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          email VARCHAR(255) UNIQUE NOT NULL,
-          password VARCHAR(255) NOT NULL,
-          name TEXT NOT NULL
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        name TEXT NOT NULL
       );
     `);
     console.log("SYS_USERS table created successfully!");
 
-    seedUsers(db);
-  } catch (err) {
-    console.error("Migration error:", err);
+    await seedUsers();
+  } catch (error) {
+    console.error("Migration error:", error);
   }
 };

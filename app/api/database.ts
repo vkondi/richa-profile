@@ -18,10 +18,10 @@ let isInitialized = false;
 
 const initDatabase = async () => {
   if (!isInitialized) {
-    console.log("Running database migrations...");
+    console.log("⚡Running database migrations...");
     await migrate();
     isInitialized = true;
-    console.log("Database migrations complete.");
+    console.log("✅ Database migrations complete.");
   }
 };
 

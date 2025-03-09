@@ -53,8 +53,7 @@ export async function POST(req: Request) {
               ...prev.queryPool,
               pool.query(
                 `INSERT INTO INTERPRETATIONS (type, number, description)
-             VALUES ($1, $2, $3)
-             RETURNING *`,
+                 VALUES ($1, $2, $3) ON CONFLICT (type, number) DO NOTHING RETURNING *`,
                 [curr.type, curr.number, curr.description]
               ),
             ],

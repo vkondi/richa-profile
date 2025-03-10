@@ -1,5 +1,6 @@
 // Utility Functions
 
+import { PinnacleDataType } from "@/types/types";
 import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "./constants";
 
 // Function to reduce a number to a single digit or Master Number (11, 22, 33)
@@ -122,4 +123,79 @@ export const suggestLuckyNames = (
     }
   }
   return [...new Set(variations)].slice(0, 5); // Return max 5 unique suggestions
+};
+
+/**
+ * Pinnacle Number Calculation Formula:
+ *
+ * #1: Calculate Destiny Number (DN):
+ *  - Sum all digits of the full birth date until a single digit is obtained.
+ *  - Example: For 05/08/1990, calculate DN by summing month, day, and year digits until a single digit is reached i.e. 5.
+ * #2: Extract First Phase Age Limit:
+ *  - Formula: 36 - DN
+ *  - Example: If DN is 5, then 36 -5 = 31
+ * #3: Calculate Pinnacle Phases:
+ *      - Phase 1: 0 to (36 - DN)
+ *      - Phase 2: (36 - DN) + 1 to (36 - DN) + 9
+ *      - Phase 3: (36 - DN) + 10 to (36 - DN) + 18
+ *      - Phase 4: Beyond (36 - DN) + 18
+ * #4: Calculate Pinnacle Number for Each Phase:
+ *  - Pinnacle Number 1 (Phase 1): Birth Month + Birth Day
+ *  - Pinnacle Number 2 (Phase 2): Birth Year + Birth Day
+ *  - Pinnacle Number 3 (Phase 3): Pinnacle Number 1 + Pinnacle Number 2
+ *  - Pinnacle Number 4 (Phase 4): Birth Month + Birth Year
+ */
+export const calculatePinnacleNumber = (
+  dateString: string
+): PinnacleDataType[] => {
+  const destinyNumber = getDestinyNumber(dateString) as number;
+  const dateObj = new Date(dateString);
+  const day = dateObj.getDate();
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth() + 1;
+
+  // Phases
+  const phase1End = 36 - destinyNumber;
+  const phase2Start = phase1End + 1;
+  const phase2End = phase1End + 9;
+  const phase3Start = phase2End + 1;
+  const phase3End = phase2End + 9;
+
+  // Calculate pinnacle numbers for respective phase
+  const pinnNumber1 = reduceToSingleDigit(month + day);
+  const pinnNumber2 = reduceToSingleDigit(year + day);
+
+  return [
+    {
+      id: 1,
+      pinnacle: "First Pinnacle",
+      ageStart: 0,
+      ageEnd: phase1End,
+      ageSpan: `0 to ${phase1End}`,
+      number: pinnNumber1,
+    },
+    {
+      id: 2,
+      pinnacle: "Second Pinnacle",
+      ageStart: phase2Start,
+      ageEnd: phase2End,
+      ageSpan: `${phase2Start} to ${phase2End}`,
+      number: pinnNumber2,
+    },
+    {
+      id: 3,
+      pinnacle: "Third Pinnacle",
+      ageStart: phase3Start,
+      ageEnd: phase3End,
+      ageSpan: `${phase3Start} to ${phase3End}`,
+      number: reduceToSingleDigit(pinnNumber1 + pinnNumber2),
+    },
+    {
+      id: 4,
+      pinnacle: "Fourth Pinnacle",
+      ageStart: phase3End,
+      ageSpan: `${phase3End} and beyond`,
+      number: reduceToSingleDigit(month + year),
+    },
+  ];
 };

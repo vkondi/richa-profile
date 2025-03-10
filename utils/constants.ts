@@ -98,3 +98,7 @@ export const HEADER_MENU_ITEMS = [
     href: "/about",
   },
 ];
+
+// Database tables
+export const INTERPRETATIONS_TABLE = "INTERPRETATIONS";
+export const SYS_USERS_TABLE = "SYS_USERS";

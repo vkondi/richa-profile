@@ -23,9 +23,9 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const pathname = usePathname();
 
-  const isMobile = useMediaQuery({ maxWidth: 768 }); // Check if the screen width is less than or equal to 768px
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to manage the drawer visibility
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to manage the open dropdown
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false); // State to manage hydration
   const drawerRef = useRef<HTMLDivElement>(null); // Ref for the drawer
   const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown

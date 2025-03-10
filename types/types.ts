@@ -29,3 +29,12 @@ export type SysUserModel = {
   name: string;
   password?: string;
 };
+
+export type InterpretationModel = {
+  id: number;
+  type: string;
+  number: number;
+  description: string;
+};
+
+export type INTERPRETATION = "SOUL" | "PINNACLE" | "CHALLENGE";

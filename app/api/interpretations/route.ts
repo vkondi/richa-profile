@@ -22,7 +22,7 @@ export async function GET(req: Request) {
 
     const result = await pool.query(query, params);
 
-    return NextResponse.json({ data: result.rows });
+    return NextResponse.json({ data: result.rows, count: result.rows.length });
   } catch (err) {
     console.error("interpretations GET >> Exception: ", err);
 

@@ -1,8 +1,9 @@
 "use client";
 
+import { useState, ChangeEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
-import { useState, ChangeEvent } from "react";
+import { LOGIN_URL } from "@/utils/URL";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

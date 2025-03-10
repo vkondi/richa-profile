@@ -1,17 +1,30 @@
-// Grid.tsx
-import React, { useState } from "react";
+import { FC, Fragment, useState } from "react";
 import styles from "./styles.module.css";
 import { PinnacleDataType } from "@/types/types";
 
-interface GridProps {
+interface Props {
   data: PinnacleDataType[];
 }
 
-const ExpandableGrid: React.FC<GridProps> = ({ data }) => {
+const PinnacleResultGrid: FC<Props> = ({ data }) => {
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
   const toggleRow = (id: number) => {
     setExpandedRow(expandedRow === id ? null : id);
+  };
+
+  const renderDescription = (description?: string) => {
+    if (!description) return null;
+
+    const split = description.split(".").filter((text) => text.trim() !== "");
+
+    return (
+      <ol>
+        {split.map((rec, i) => (
+          <li key={i}>{rec.trim()}</li>
+        ))}
+      </ol>
+    );
   };
 
   return (
@@ -25,7 +38,7 @@ const ExpandableGrid: React.FC<GridProps> = ({ data }) => {
 
       {/* Data Rows */}
       {data.map((row) => (
-        <React.Fragment key={row.id}>
+        <Fragment key={row.id}>
           <div
             className={`${styles.row} ${expandedRow === row.id ? styles.activeRow : ""}`}
             onClick={() => toggleRow(row.id)}
@@ -36,13 +49,13 @@ const ExpandableGrid: React.FC<GridProps> = ({ data }) => {
           </div>
           {expandedRow === row.id && (
             <div className={styles.expandedContent}>
-              <p>{row.description}</p>
+              {renderDescription(row.description)}
             </div>
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );
 };
 
-export default ExpandableGrid;
+export default PinnacleResultGrid;

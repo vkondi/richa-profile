@@ -4,7 +4,7 @@ import React, { FC, useState, useCallback } from "react";
 import { calculatePinnacleNumber } from "@utils/utility";
 import DateCalcTemplate from "@/components/templates/DateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
-import ExpandableGrid from "./ExpandableGrid";
+import PinnacleResultGrid from "./PinnacleResultGrid";
 import { PinnacleDataType } from "@/types/types";
 
 const PinnacleNumberCalculator: FC = () => {
@@ -37,7 +37,7 @@ const PinnacleNumberCalculator: FC = () => {
   );
 
   const renderResultTiles = () => {
-    return <ExpandableGrid data={pinnacleData} />;
+    return <PinnacleResultGrid data={pinnacleData} />;
   };
 
   return (

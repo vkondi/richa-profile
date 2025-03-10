@@ -38,3 +38,13 @@ export type InterpretationModel = {
 };
 
 export type INTERPRETATION = "SOUL" | "PINNACLE" | "CHALLENGE";
+
+export type PinnacleDataType = {
+  id: number;
+  pinnacle: string;
+  ageStart: number;
+  ageEnd?: number;
+  ageSpan: string;
+  number: number;
+  description?: string;
+};

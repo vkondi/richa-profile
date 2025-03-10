@@ -1,3 +1,4 @@
+// Calculator Routes
 export const CALCULATOR_LINKS = [
   {
     href: "/all-in-one-calculator",
@@ -13,6 +14,11 @@ export const CALCULATOR_LINKS = [
     href: "/destiny-number-calculator",
     label: "Destiny Number",
     logoUrl: "/images/destiny-number.svg",
+  },
+  {
+    href: "/pinnacle-number-calculator",
+    label: "Pinnacle Number",
+    logoUrl: "/images/pinnacle-number.svg",
   },
   {
     href: "/personality-number",
@@ -99,6 +105,6 @@ export const HEADER_MENU_ITEMS = [
   },
 ];
 
-// Database tables
+// Database table names
 export const INTERPRETATIONS_TABLE = "INTERPRETATIONS";
 export const SYS_USERS_TABLE = "SYS_USERS";

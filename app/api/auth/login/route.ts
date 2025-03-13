@@ -14,8 +14,8 @@ export async function POST(req: Request) {
     if (result.rows.length > 0) {
       const user = result.rows[0] as SysUserModel;
 
-      // Create a session token (you might use JWT or another method)
-      const sessionToken = generateSessionToken(user as SysUserModel);
+      // Create a session token
+      const { sessionToken, exp } = generateSessionToken(user as SysUserModel);
 
       const response = NextResponse.json({ authenticated: true });
 
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
-        maxAge: 60 * 60 * 24, // 24 hours in seconds
+        maxAge: exp, // Set maxAge to match the token expiry
         path: "/",
       });
 

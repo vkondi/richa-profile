@@ -27,7 +27,6 @@ export default function Home() {
       const position = num === 0 ? 9 : num;
       positions[position - 1]++;
     });
-    debugger;
     return { grid: positions, numbers: numerologyNumbers };
   };
 

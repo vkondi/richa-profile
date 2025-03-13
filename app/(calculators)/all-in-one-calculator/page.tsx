@@ -85,10 +85,18 @@ const NameNumerologyCalculator: React.FC = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Name to number" result={nameToNumber} />
-        <ResultTile title="Soul urge number" result={soulUrgeNumber} />
-        <ResultTile title="Destiny number" result={destinyNymber} />
-        <ResultTile title="Personality number" result={personalityNumber} />
+        {nameToNumber && (
+          <ResultTile title="Name to number" result={nameToNumber} />
+        )}
+        {soulUrgeNumber && (
+          <ResultTile title="Soul urge number" result={soulUrgeNumber} />
+        )}
+        {destinyNymber && (
+          <ResultTile title="Destiny number" result={destinyNymber} />
+        )}
+        {personalityNumber && (
+          <ResultTile title="Personality number" result={personalityNumber} />
+        )}
       </>
     );
   };

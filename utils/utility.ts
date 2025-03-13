@@ -20,11 +20,13 @@ export const convertNameToNumber = (
   name: string,
   mapping: Record<string, number> = PYTHAGOREAN_MAPPING
 ): number => {
-  return name
+  const total = name
     .toUpperCase()
     .replace(/[^A-Z]/g, "") // Remove non-alphabetic characters
     .split("")
     .reduce((sum, char) => sum + (mapping[char] || 0), 0);
+
+  return reduceToSingleDigit(total);
 };
 
 // Calculate Expression Number (Destiny Number)

@@ -21,8 +21,17 @@ export async function GET(req: Request) {
     }
 
     const result = await pool.query(query, params);
+    const response = NextResponse.json({
+      count: result.rows.length,
+      data: result.rows,
+    });
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=3600, s-maxage=3600, stale-while-revalidate=59"
+    );
 
-    return NextResponse.json({ data: result.rows, count: result.rows.length });
+    return response;
+    // return NextResponse.json({ data: result.rows, count: result.rows.length });
   } catch (err) {
     console.error("interpretations GET >> Exception: ", err);
 

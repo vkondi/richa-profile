@@ -5,6 +5,7 @@ import ResultTile from "@/components/ResultTile";
 import { getDestinyNumber } from "@utils/utility";
 import DateCalcTemplate from "@/components/templates/DateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
+import { DESTINY_NUM_INTERPRETATION } from "@/utils/constants";
 
 const DestinyNumberCalculator: FC = () => {
   const { dob, setDOB } = useRootContext();
@@ -34,7 +35,11 @@ const DestinyNumberCalculator: FC = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Destiny number" result={destinyNymber} />
+        <ResultTile
+          title="Destiny number"
+          result={destinyNymber}
+          type={DESTINY_NUM_INTERPRETATION}
+        />
       </>
     );
   };

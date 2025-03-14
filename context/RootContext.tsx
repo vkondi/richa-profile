@@ -24,7 +24,7 @@ type RootContextType = {
   getInterpretation: (
     type: InterpretationModel["type"],
     number: InterpretationModel["number"]
-  ) => InterpretationModel;
+  ) => InterpretationModel | null;
 };
 
 const RootContext = createContext<RootContextType | undefined>(undefined);
@@ -60,14 +60,17 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
     (
       type: InterpretationModel["type"],
       number: InterpretationModel["number"]
-    ): InterpretationModel => {
+    ): InterpretationModel | null => {
       // Implement the logic to find and return the appropriate interpretation
       const interpretation = interpretations?.find(
         (interpretation) =>
           interpretation.type === type && interpretation.number === number
       );
       if (!interpretation) {
-        throw new Error("Interpretation not found");
+        console.error(
+          `Interpretation not found for type: ${type} and number: ${number}`
+        );
+        return null;
       }
       return interpretation;
     },

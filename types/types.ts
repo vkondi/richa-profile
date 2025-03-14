@@ -37,7 +37,13 @@ export type InterpretationModel = {
   description: string;
 };
 
-export type INTERPRETATION = "SOUL" | "PINNACLE" | "CHALLENGE";
+export type INTERPRETATION =
+  | "NAME_TO_NUMBER"
+  | "SOUL"
+  | "DESTINY"
+  | "PERSONALITY"
+  | "CHALLENGE"
+  | "PINNACLE";
 
 export type PinnacleDataType = {
   id: number;

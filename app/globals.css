@@ -19,6 +19,7 @@ body {
 }
 
 .calculateBtn {
+  cursor: pointer;
   color: white;
   font-size: max(1.2vw, 1.6em);
   font-weight: 600;

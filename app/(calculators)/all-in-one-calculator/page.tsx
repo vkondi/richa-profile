@@ -6,6 +6,7 @@ import React, {
   ChangeEvent,
   useMemo,
   useEffect,
+  FC,
 } from "react";
 import ResultTile from "@/components/ResultTile";
 import {
@@ -14,14 +15,23 @@ import {
   getDestinyNumber,
   getSoulUrgeNumber,
 } from "@utils/utility";
-import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
+import {
+  CHALDEAN_MAPPING,
+  DESTINY_NUM_INTERPRETATION,
+  NAME_TO_NUM_INTERPRETATION,
+  PERSONALITY_NUM_INTERPRETATION,
+  PYTHAGOREAN_MAPPING,
+  SOUL_NUM_INTERPRETATION,
+} from "@/utils/constants";
 import NameDateCalcTemplate from "@/components/templates/NameDateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
 import { SystemType } from "@/types/types";
 
-const NameNumerologyCalculator: React.FC = () => {
+const NameNumerologyCalculator: FC = () => {
   const { name, setName, dob, setDOB, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
+
+ 
 
   const handleCalculate = useCallback(() => {
     if ((name && system) || dob) {
@@ -85,10 +95,34 @@ const NameNumerologyCalculator: React.FC = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Name to number" result={nameToNumber} />
-        <ResultTile title="Soul urge number" result={soulUrgeNumber} />
-        <ResultTile title="Destiny number" result={destinyNymber} />
-        <ResultTile title="Personality number" result={personalityNumber} />
+        {typeof nameToNumber === "number" && (
+          <ResultTile
+            title="Name to number"
+            result={nameToNumber}
+            type={NAME_TO_NUM_INTERPRETATION}
+          />
+        )}
+        {typeof soulUrgeNumber === "number" && (
+          <ResultTile
+            title="Soul urge number"
+            result={soulUrgeNumber}
+            type={SOUL_NUM_INTERPRETATION}
+          />
+        )}
+        {typeof destinyNymber === "number" && (
+          <ResultTile
+            title="Destiny number"
+            result={destinyNymber}
+            type={DESTINY_NUM_INTERPRETATION}
+          />
+        )}
+        {typeof personalityNumber === "number" && (
+          <ResultTile
+            title="Personality number"
+            result={personalityNumber}
+            type={PERSONALITY_NUM_INTERPRETATION}
+          />
+        )}
       </>
     );
   };
@@ -96,6 +130,8 @@ const NameNumerologyCalculator: React.FC = () => {
   useEffect(() => {
     setResultVisibility(false);
   }, [name, dob, system]);
+
+
 
   return (
     <NameDateCalcTemplate

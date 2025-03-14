@@ -5,6 +5,7 @@ import ResultTile from "@/components/ResultTile";
 import { useRootContext } from "@/context/RootContext";
 import { getBirthDayNumber } from "@/utils/utility";
 import { useCallback, useMemo, useState } from "react";
+import { PERSONALITY_NUM_INTERPRETATION } from "@/utils/constants";
 
 const LifePathNumber = () => {
   const { dob, setDOB } = useRootContext();
@@ -35,7 +36,11 @@ const LifePathNumber = () => {
   const renderResultTiles = () => {
     return (
       <>
-        <ResultTile title="Personality number" result={personalityNumber} />
+        <ResultTile
+          title="Personality number"
+          result={personalityNumber}
+          type={PERSONALITY_NUM_INTERPRETATION}
+        />
       </>
     );
   };

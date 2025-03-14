@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { HEADER_MENU_ITEMS } from "@/utils/constants";
 import { RootProvider } from "@/context/RootContext";
+import { PopupProvider } from "@/context/PopupContext";
 import { Suspense } from "react";
 
 const geistSans = Geist({
@@ -32,12 +33,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <RootProvider>
-          <Header
-            title="Vagmi Richa Vishwajiet"
-            menuItems={HEADER_MENU_ITEMS}
-          />
+          <PopupProvider>
+            <Header
+              title="Vagmi Richa Vishwajiet"
+              menuItems={HEADER_MENU_ITEMS}
+            />
 
-          <Suspense>{children}</Suspense>
+            <Suspense>{children}</Suspense>
+          </PopupProvider>
         </RootProvider>
       </body>
     </html>

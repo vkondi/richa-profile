@@ -62,6 +62,7 @@ async function seedUsers() {
 
       const query = `
         INSERT INTO SYS_USERS (name, password, email) VALUES ${values}
+        ON CONFLICT (email) DO NOTHING
       `;
 
       await pool.query(
@@ -82,49 +83,43 @@ async function seedUsers() {
 // Seed Interpretations
 const seedInterpretations = async () => {
   try {
-    const { rowCount } = await pool.query(
-      `SELECT * FROM ${INTERPRETATIONS_TABLE}`
-    );
+    const csvPath = path.join(process.cwd(), "data/interpretations_data.csv");
+    let interpretations: Partial<InterpretationModel>[] = [];
 
-    // Check if data exists in table
-    if (rowCount === 0) {
-      const csvPath = path.join(process.cwd(), "data/interpretations_data.csv");
-      let interpretations: Partial<InterpretationModel>[] = [];
-
-      // Check CSV exists at given path
-      if (fs.existsSync(csvPath)) {
-        interpretations = await readInterpretationsFromCSV(csvPath);
-        console.log("interpretations count: ", interpretations.length);
-      } else {
-        console.error("Interpretations incorrect CSV path: ", csvPath);
-        return;
-      }
-
-      // No data in CSV?
-      if (interpretations.length === 0) {
-        console.warn("❗No interpretations found in CSV");
-        return;
-      }
-
-      // Using a single INSERT query for better performance
-      const values = interpretations
-        .map((_, i) => `($${i * 3 + 1}, $${i * 3 + 2}, $${i * 3 + 3})`)
-        .join(", ");
-
-      const query = `
-          INSERT INTO ${INTERPRETATIONS_TABLE} (type, number, description) VALUES ${values}
-        `;
-
-      const valuesMap = interpretations.flatMap((interpretation) => [
-        interpretation.type,
-        interpretation.number,
-        interpretation.description,
-      ]);
-
-      await pool.query(query, valuesMap);
-
-      console.log(`✅ Seed data for ${INTERPRETATIONS_TABLE} table`);
+    // Check CSV exists at given path
+    if (fs.existsSync(csvPath)) {
+      interpretations = await readInterpretationsFromCSV(csvPath);
+      console.log("interpretations count: ", interpretations.length);
+    } else {
+      console.error("Interpretations incorrect CSV path: ", csvPath);
+      return;
     }
+
+    // No data in CSV?
+    if (interpretations.length === 0) {
+      console.warn("❗No interpretations found in CSV");
+      return;
+    }
+
+    // Using a single INSERT query for better performance
+    const values = interpretations
+      .map((_, i) => `($${i * 3 + 1}, $${i * 3 + 2}, $${i * 3 + 3})`)
+      .join(", ");
+
+    const query = `
+      INSERT INTO ${INTERPRETATIONS_TABLE} (type, number, description) VALUES ${values}
+      ON CONFLICT (type, number) DO NOTHING
+    `;
+
+    const valuesMap = interpretations.flatMap((interpretation) => [
+      interpretation.type,
+      interpretation.number,
+      interpretation.description,
+    ]);
+
+    await pool.query(query, valuesMap);
+
+    console.log(`✅ Seed data for ${INTERPRETATIONS_TABLE} table`);
   } catch (error) {
     console.error(
       `❌ Failed to seed data for ${INTERPRETATIONS_TABLE} table:`,

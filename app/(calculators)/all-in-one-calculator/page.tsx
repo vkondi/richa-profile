@@ -6,6 +6,7 @@ import React, {
   ChangeEvent,
   useMemo,
   useEffect,
+  FC,
 } from "react";
 import ResultTile from "@/components/ResultTile";
 import {
@@ -18,10 +19,13 @@ import { CHALDEAN_MAPPING, PYTHAGOREAN_MAPPING } from "@/utils/constants";
 import NameDateCalcTemplate from "@/components/templates/NameDateCalcTemplate";
 import { useRootContext } from "@/context/RootContext";
 import { SystemType } from "@/types/types";
+import { usePopupContext } from "@/context/PopupContext";
 
-const NameNumerologyCalculator: React.FC = () => {
+const NameNumerologyCalculator: FC = () => {
   const { name, setName, dob, setDOB, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
+
+  const { setOpen } = usePopupContext();
 
   const handleCalculate = useCallback(() => {
     if ((name && system) || dob) {
@@ -85,16 +89,16 @@ const NameNumerologyCalculator: React.FC = () => {
   const renderResultTiles = () => {
     return (
       <>
-        {nameToNumber && (
+        {typeof nameToNumber === "number" && (
           <ResultTile title="Name to number" result={nameToNumber} />
         )}
-        {soulUrgeNumber && (
+        {typeof soulUrgeNumber === "number" && (
           <ResultTile title="Soul urge number" result={soulUrgeNumber} />
         )}
-        {destinyNymber && (
+        {typeof destinyNymber === "number" && (
           <ResultTile title="Destiny number" result={destinyNymber} />
         )}
-        {personalityNumber && (
+        {typeof personalityNumber === "number" && (
           <ResultTile title="Personality number" result={personalityNumber} />
         )}
       </>
@@ -104,6 +108,10 @@ const NameNumerologyCalculator: React.FC = () => {
   useEffect(() => {
     setResultVisibility(false);
   }, [name, dob, system]);
+
+  useEffect(() => {
+    setOpen(true);
+  },[setOpen])
 
   return (
     <NameDateCalcTemplate

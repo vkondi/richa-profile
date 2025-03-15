@@ -1,0 +1,83 @@
+{
+  "1": {
+    "0": "A lack of number 1 indicates struggles with self-confidence and an inability to take initiative. Such individuals may hesitate to make decisions and rely heavily on others for direction.",
+    "1": "Independent but hesitant in asserting themselves. They have ideas but may struggle to voice them, leading to missed opportunities for leadership.",
+    "2": "Developing leadership skills with a balanced approach. They show determination but may sometimes need external motivation to take charge.",
+    "3": "Confident leader, capable of taking responsibility. They are goal-oriented and work hard to achieve their ambitions, though they may sometimes doubt themselves.",
+    "4": "Highly ambitious and self-assured. They make strong decisions and inspire others, often taking on leadership roles naturally.",
+    "5": "A natural-born leader with a commanding presence. While they can be highly influential, they may also struggle with controlling tendencies and a desire for dominance.",
+    "6": "Exceptionally confident, influential, and authoritative. They command respect but may come across as overly aggressive or egotistical if not mindful."
+  },
+  "2": {
+    "0": "A complete absence of number 2 suggests difficulty in forming emotional connections and understanding others' feelings. Intuition may be weak, leading to struggles in relationships.",
+    "1": "A sensitive and kind person but may find it hard to openly express emotions. They can be hesitant in trusting others fully.",
+    "2": "Balanced emotions and good intuition. They care deeply for others and maintain harmonious relationships, though they may occasionally feel emotionally vulnerable.",
+    "3": "Highly empathetic and deeply connected to others. They can easily sense emotions and are often the go-to person for emotional support.",
+    "4": "Extremely intuitive, compassionate, and emotionally wise. They understand people at a deep level and often act as mediators in conflicts.",
+    "5": "An incredibly caring and emotionally intelligent individual. They may, however, absorb others' emotions too much, leading to emotional exhaustion.",
+    "6": "Highly sensitive and deeply attached to relationships. While they love unconditionally, they may become overly dependent or emotionally overwhelmed."
+  },
+  "3": {
+    "0": "Without number 3, creativity and self-expression are stifled. Such individuals may struggle to articulate their thoughts and feel disconnected from joy and spontaneity.",
+    "1": "Creative but reserved in expression. They may have many ideas but lack the confidence to share them openly.",
+    "2": "Enjoys artistic activities and has a good imagination. They express themselves well but may require encouragement to fully develop their creative potential.",
+    "3": "Highly expressive and sociable, with a natural talent for communication. They thrive in creative environments and enjoy engaging with others.",
+    "4": "A brilliant and artistic mind, often drawn to public speaking, writing, or storytelling. Their charisma makes them highly influential in social settings.",
+    "5": "Exceptionally creative and full of ideas. They thrive in creative industries but may sometimes seek excessive attention or validation.",
+    "6": "Overflowing with creativity, enthusiasm, and charm. They may struggle with focus, shifting between projects without finishing them."
+  },
+  "4": {
+    "0": "A lack of number 4 suggests difficulty with discipline, organization, and persistence. Such individuals may struggle with maintaining structure in their lives.",
+    "1": "Hardworking but inconsistent. They have the potential for discipline but may lack the drive to follow through on long-term commitments.",
+    "2": "Practical and responsible, valuing stability. They prefer order and tend to be reliable in work and personal life.",
+    "3": "Highly disciplined and structured. They excel in planning and are known for their dependability and dedication.",
+    "4": "An exceptional work ethic with a strong sense of duty. They are highly methodical and strategic in their approach to life.",
+    "5": "Extremely structured and focused. While they achieve great success, they may be rigid in their thinking and resistant to change.",
+    "6": "Highly disciplined but may become too strict with themselves and others. They might struggle with flexibility and adapting to new ideas."
+  },
+  "5": {
+    "0": "Without number 5, adaptability and spontaneity are missing. Such individuals may fear change and struggle with decision-making.",
+    "1": "Craves freedom but may feel restricted by circumstances. They may resist change but secretly desire new experiences.",
+    "2": "Adventurous and curious, but with a need for stability. They enjoy variety but also seek a solid foundation in life.",
+    "3": "Highly adaptable, sociable, and open to new experiences. They thrive in dynamic environments and embrace change easily.",
+    "4": "Energetic and quick-thinking, often embracing challenges with enthusiasm. They love excitement but maintain some level of control.",
+    "5": "Charismatic and fearless in the face of change. However, they may struggle with commitment and direction.",
+    "6": "Restless and unpredictable, constantly seeking new experiences. They may struggle with focus and find it difficult to settle down."
+  },
+  "6": {
+    "0": "Without number 6, there is a lack of responsibility towards family and relationships. Such individuals may struggle with commitment and domestic stability.",
+    "1": "Caring but may avoid responsibilities. They enjoy relationships but hesitate to take on major commitments.",
+    "2": "Loyal and dependable, prioritizing family and relationships. They balance personal and professional life well.",
+    "3": "Deeply nurturing and protective. They find joy in helping others and creating a harmonious environment.",
+    "4": "Highly responsible and family-oriented. They often take on caregiving roles and excel at providing stability.",
+    "5": "Extremely devoted to loved ones, sometimes overly so. They may overextend themselves in caregiving, neglecting personal needs.",
+    "6": "Highly responsible to the point of being controlling. They may become overly attached and struggle with letting go."
+  },
+  "7": {
+    "0": "A missing number 7 indicates a lack of introspection and deep thinking. The individual may struggle with self-reflection and critical thinking.",
+    "1": "Curious and intellectual but may lack depth in analysis. They enjoy learning but might not explore topics deeply.",
+    "2": "Thoughtful and intuitive, with a keen interest in knowledge. They enjoy intellectual discussions and philosophical ideas.",
+    "3": "A deep thinker with a strong desire for self-improvement. They enjoy exploring spiritual or intellectual pursuits.",
+    "4": "Highly analytical and observant. They seek deeper meaning in life and often engage in serious study or contemplation.",
+    "5": "Extremely intelligent and philosophical, though they may be overly skeptical. They question everything and seek profound truths.",
+    "6": "Highly introspective, possibly to the point of isolation. They may become too lost in thought, overanalyzing every aspect of life."
+  },
+  "8": {
+    "0": "A missing number 8 suggests financial instability and a lack of ambition. Such individuals may struggle with long-term goals.",
+    "1": "Has a drive for success but may lack persistence. They need guidance to channel their ambition effectively.",
+    "2": "Goal-oriented and seeks financial stability. They work hard to achieve steady progress in life.",
+    "3": "Highly ambitious, with strong leadership qualities. They are determined to succeed and work diligently toward their goals.",
+    "4": "An expert in financial matters and strategy. They are methodical in their approach to wealth and success.",
+    "5": "Highly influential and wealth-conscious. They may focus heavily on material success but risk becoming overly ambitious.",
+    "6": "Extremely driven, often obsessed with power and success. They may become ruthless in their pursuit of goals."
+  },
+  "9": {
+    "0": "A missing number 9 suggests a lack of compassion and broad vision. The individual may struggle with understanding the needs of others and lack a humanitarian outlook.",
+    "1": "Kind-hearted but reserved in expressing empathy. They care about others but may find it difficult to act on their compassionate instincts.",
+    "2": "Deeply caring and willing to help others. They form strong emotional bonds and show genuine concern for those in need.",
+    "3": "Highly compassionate and selfless. They are naturally drawn to humanitarian efforts and feel fulfilled when helping others.",
+    "4": "Deeply humanitarian, always seeking ways to uplift others. They balance their kindness with practicality, making them effective in social causes.",
+    "5": "Exceptionally generous and service-oriented. They dedicate themselves to improving the lives of others but may neglect their own needs.",
+    "6": "A true humanitarian with a deep sense of duty toward society. They may become overly idealistic, sacrificing too much for their causes."
+  }
+}

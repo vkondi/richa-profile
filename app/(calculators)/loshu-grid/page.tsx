@@ -6,19 +6,22 @@ import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import DateField from "@/components/DateField";
 import styles from "./styles.module.css";
 import { getBirthDayNumber, getDestinyNumber } from "@/utils/utility";
+import { useRootContext } from "@/context/RootContext";
 
 type DigitCount = Record<number, number>;
 
 export default function Home() {
-  const [dob, setDob] = useState<string>("");
+  const { dob, setDOB } = useRootContext();
   const [digitCount, setDigitCount] = useState<DigitCount | null>(null);
 
   const onDOBChange = (date: string) => {
-    setDob(date);
+    setDOB(date);
     setDigitCount(null);
   };
 
   const onCalculateClick = () => {
+    if (typeof dob !== "string") return;
+
     const destinyNymber = getDestinyNumber(dob) as number;
     const personalityNumber = getBirthDayNumber(new Date(dob).getDate());
     const digits = dob

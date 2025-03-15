@@ -54,3 +54,15 @@ export type PinnacleDataType = {
   number: number;
   description?: string;
 };
+
+export type LoshuGridInterpretation = {
+  [key in 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9]: {
+    0: string; // Interpretation when the number is missing
+    1: string;
+    2: string;
+    3: string;
+    4: string;
+    5: string;
+    6: string;
+  };
+};

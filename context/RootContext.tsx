@@ -1,7 +1,12 @@
 "use client";
 
-import { InterpretationModel, SystemType } from "@/types/types";
-import { INTERPRETATIONS_URL } from "@/utils/URL";
+import {
+  InterpretationModel,
+  LoshuGridInterpretation,
+  SystemType,
+} from "@/types/types";
+import { INTERPRETATIONS_URL, LOSHU_INTERPRETATIONS_URL } from "@/utils/URL";
+import { exists } from "fs";
 import {
   createContext,
   Dispatch,
@@ -25,6 +30,8 @@ type RootContextType = {
     type: InterpretationModel["type"],
     number: InterpretationModel["number"]
   ) => InterpretationModel | null;
+  fetchLoshuInterpretations: (forceFetch?: boolean) => void;
+  loshuInterpretations?: LoshuGridInterpretation;
 };
 
 const RootContext = createContext<RootContextType | undefined>(undefined);
@@ -35,6 +42,10 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
   const [dob, setDOB] = useState<string | undefined>();
   const [interpretations, setInterpretations] = useState<
     InterpretationModel[] | undefined
+  >();
+
+  const [loshuInterpretations, setLoshuInterpretations] = useState<
+    LoshuGridInterpretation | undefined
   >();
 
   // API call to fetch Interpretations
@@ -53,6 +64,28 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
       setInterpretations(parsedResponse?.data ?? []);
     } catch (err: unknown) {
       console.error("[fetchInterpretations] >> Exception: ", err);
+    }
+  };
+
+  // API call to fetch Lo-shu Interpretations
+  const fetchLoshuInterpretations = async (forceFetch: boolean = false) => {
+    try {
+      // Check if data already exists
+      if (!forceFetch && loshuInterpretations) return;
+
+      const response = await fetch(LOSHU_INTERPRETATIONS_URL);
+      const parsedResponse = await response.json();
+
+      // Error check
+      if (!response.ok) {
+        throw new Error(
+          parsedResponse.error || "Failed fetching loshu interpretations"
+        );
+      }
+
+      setLoshuInterpretations(parsedResponse?.data);
+    } catch (err: unknown) {
+      console.error("[fetchLoshuInterpretations] >> Exception: ", err);
     }
   };
 
@@ -92,6 +125,8 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
         setSystem,
         interpretations,
         getInterpretation,
+        fetchLoshuInterpretations,
+        loshuInterpretations,
       }}
     >
       {children}

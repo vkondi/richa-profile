@@ -5,46 +5,38 @@ import { LoshuGrid } from "@/components/LoshuGrid";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import DateField from "@/components/DateField";
 import styles from "./styles.module.css";
+import { getBirthDayNumber, getDestinyNumber } from "@/utils/utility";
+
+type DigitCount = Record<number, number>;
 
 export default function Home() {
   const [dob, setDob] = useState<string>("");
-  const [grid, setGrid] = useState<number[] | null>(null);
-  const [numbers, setNumbers] = useState<number[] | null>(null);
-
-  const calculateLoshuGrid = (
-    dateString: string
-  ): { grid: number[]; numbers: number[] } | null => {
-    if (!dateString) return null;
-
-    // Convert date string to numbers
-    const dateDigits = dateString.split("-").join("").split("");
-
-    // Calculate the numerology numbers from DOB
-    const numerologyNumbers = dateDigits.map((digit) => parseInt(digit, 10));
-
-    // Calculate which positions have numbers
-    const positions = Array(9).fill(0);
-
-    numerologyNumbers.forEach((num) => {
-      // In Lo Shu Grid, 9 is placed at position 9, not 0
-      const position = num === 0 ? 9 : num;
-      positions[position - 1]++;
-    });
-    return { grid: positions, numbers: numerologyNumbers };
-  };
+  const [digitCount, setDigitCount] = useState<DigitCount | null>(null);
 
   const onDOBChange = (date: string) => {
     setDob(date);
+    setDigitCount(null);
   };
 
   const onCalculateClick = () => {
-    if (dob) {
-      const result = calculateLoshuGrid(dob);
-      if (result) {
-        setGrid(result.grid);
-        setNumbers(result.numbers);
-      }
-    }
+    const destinyNymber = getDestinyNumber(dob) as number;
+    const personalityNumber = getBirthDayNumber(new Date(dob).getDate());
+    const digits = dob
+      .replace(/[^0-9]/g, "")
+      .split("")
+      .map(Number);
+    const count = digits.reduce(
+      (prev: DigitCount, number: number) => {
+        return { ...prev, [number]: (prev[number] || 0) + 1 };
+      },
+      { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
+    );
+
+    // Add count for destinyNymber & personalityNumber
+    count[destinyNymber] = count[destinyNymber] + 1;
+    count[personalityNumber] = count[personalityNumber] + 1;
+
+    setDigitCount(count);
   };
 
   return (
@@ -65,9 +57,9 @@ export default function Home() {
           </div>
         </div>
 
-        {grid && numbers && (
+        {digitCount && (
           <div className={styles.resultContainer}>
-            <LoshuGrid grid={grid} />
+            <LoshuGrid digitCount={digitCount} />
           </div>
         )}
       </div>

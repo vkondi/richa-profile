@@ -1,0 +1,46 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  width: 100%;
+}
+
+.gridCell {
+  position: relative;
+  background: radial-gradient(transparent, #8000002b);
+  border: 1px solid #ccc;
+}
+
+/* This creates the aspect ratio */
+.gridCell::before {
+  content: "";
+  display: block;
+  padding-top: 100%; /* This ensures height equals width */
+}
+
+.gridCellWithCount {
+  background: radial-gradient(transparent, #90ee904f);
+}
+
+.cellContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.countContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5em;
+}

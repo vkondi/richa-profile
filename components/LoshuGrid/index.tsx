@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 interface LoshuGridProps {
   digitCount: Record<number, number>;
@@ -13,9 +14,13 @@ interface GridCellProps {
     presentIcon: string;
     missingIcon: string;
   };
+  isMobile: boolean;
 }
 
-const GridCell: FC<GridCellProps> = ({ cell }) => {
+const GridCell: FC<GridCellProps> = ({ cell, isMobile }) => {
+  const cellNumberIconSize = isMobile ? 40 : 50;
+  const cellCountIconSize = isMobile ? 15 : 20;
+
   return (
     <div
       className={
@@ -28,8 +33,8 @@ const GridCell: FC<GridCellProps> = ({ cell }) => {
         <Image
           src={cell.count > 0 ? cell.presentIcon : cell.missingIcon}
           alt={cell.count > 0 ? `${cell.number} x ${cell.count}` : "Missing"}
-          height={50}
-          width={50}
+          height={cellNumberIconSize}
+          width={cellNumberIconSize}
         />
 
         <div className={styles.countContainer}>
@@ -39,8 +44,8 @@ const GridCell: FC<GridCellProps> = ({ cell }) => {
             .map((_, index) => (
               <Image
                 src="/images/green_tick.svg"
-                width={20}
-                height={20}
+                width={cellCountIconSize}
+                height={cellCountIconSize}
                 alt=""
                 key={index}
               />
@@ -48,7 +53,12 @@ const GridCell: FC<GridCellProps> = ({ cell }) => {
 
           {/* For zero count */}
           {cell.count === 0 && (
-            <Image src="/images/red_cross.svg" width={20} height={20} alt="" />
+            <Image
+              src="/images/red_cross.svg"
+              width={cellCountIconSize}
+              height={cellCountIconSize}
+              alt=""
+            />
           )}
         </div>
       </div>
@@ -57,6 +67,7 @@ const GridCell: FC<GridCellProps> = ({ cell }) => {
 };
 
 export const LoshuGrid: FC<LoshuGridProps> = ({ digitCount }) => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const gridOrder = [4, 9, 2, 3, 5, 7, 8, 1, 6];
   const gridData = gridOrder.map((num) => ({
     number: num,
@@ -69,7 +80,7 @@ export const LoshuGrid: FC<LoshuGridProps> = ({ digitCount }) => {
     <div className="w-full max-w-md mx-auto mb-8">
       <div className={styles.gridContainer}>
         {gridData.map((cell, index) => (
-          <GridCell cell={cell} key={index} />
+          <GridCell cell={cell} key={index} isMobile={isMobile} />
         ))}
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LoshuGrid } from "@/components/LoshuGrid";
+import Interpretations from "@/components/LoshuGrid/Interpretations";
 import CalculatorWrapper from "@/components/layouts/CalculatorWrapper";
 import DateField from "@/components/DateField";
 import styles from "./styles.module.css";
@@ -60,9 +61,11 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Result container */}
         {digitCount && (
           <div className={styles.resultContainer}>
             <LoshuGrid digitCount={digitCount} />
+            <Interpretations digitCount={digitCount} />
           </div>
         )}
       </div>

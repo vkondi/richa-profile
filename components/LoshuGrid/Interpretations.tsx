@@ -17,10 +17,11 @@ interface LoshuInterpretations {
 const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
   digitCount,
 }) => {
-  const { fetchLoshuInterpretations, loshuInterpretations } = useRootContext() as {
-    fetchLoshuInterpretations: () => void;
-    loshuInterpretations: LoshuInterpretations;
-  };
+  const { fetchLoshuInterpretations, loshuInterpretations } =
+    useRootContext() as {
+      fetchLoshuInterpretations: () => void;
+      loshuInterpretations: LoshuInterpretations;
+    };
 
   // Fetch Loshu Interpretations on component mount
   useEffect(() => {
@@ -78,11 +79,6 @@ const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
     [missing, loshuInterpretations]
   );
 
-  console.log("missing: ", missing ? missing : "No missing numbers");
-  console.log("present: ", present ? present : "No present numbers");
-  console.log("presentInterpretations: ", presentInterpretations);
-  console.log("missingInterpretations: ", missingInterpretations);
-
   return (
     <div className={styles.interpretationContainer}>
       {/* Present numbers */}
@@ -94,7 +90,7 @@ const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
           <span className={styles.interpretationRowTitle}>
             {Array(interpretation.count)
               .fill(interpretation.number)
-              .map((_,index) => (
+              .map((_, index) => (
                 <span className={styles.interpretationRowNumber} key={index}>
                   {interpretation.number}
                 </span>

@@ -116,3 +116,6 @@ export const DESTINY_NUM_INTERPRETATION = "DESTINY";
 export const PERSONALITY_NUM_INTERPRETATION = "PERSONALITY";
 export const CHALLENGE_NUM_INTERPRETATION = "CHALLENGE";
 export const PINNACLE_NUM_INTERPRETATION = "PINNACLE";
+
+export const CACHE_CONTROL =
+  "public, max-age=3600, s-maxage=3600, stale-while-revalidate=59";

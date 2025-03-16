@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { pool } from "../database";
+import { CACHE_CONTROL } from "@/utils/constants";
 
 // GET: Fetch interpretations
 export async function GET(req: Request) {
@@ -21,8 +22,13 @@ export async function GET(req: Request) {
     }
 
     const result = await pool.query(query, params);
+    const response = NextResponse.json({
+      count: result.rows.length,
+      data: result.rows,
+    });
+    response.headers.set("Cache-Control", CACHE_CONTROL);
 
-    return NextResponse.json({ data: result.rows, count: result.rows.length });
+    return response;
   } catch (err) {
     console.error("interpretations GET >> Exception: ", err);
 

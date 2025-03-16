@@ -46,6 +46,7 @@ export default function DateField({
           min={minDate}
           max={maxDate}
           className={styles.inputField}
+          required
         />
       </div>
     </div>

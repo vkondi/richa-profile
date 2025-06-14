@@ -17,6 +17,7 @@
   flex: 1;
   padding: 10px;
   font-size: max(1.1vw, 1.3em);
+  color: var(--text-input);
 }
 
 .systemOptionSelected {

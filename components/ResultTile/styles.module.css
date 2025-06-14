@@ -9,7 +9,9 @@
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .resultTile:hover {
@@ -26,7 +28,7 @@
   text-overflow: unset;
   overflow: hidden;
   word-wrap: break-word;
-  color: var(--text-primary);
+  color: var(--text-three);
   transition: color 0.3s ease;
 }
 
@@ -38,8 +40,10 @@
   justify-content: center;
   font-size: max(3.5vw, 4em);
   font-weight: bold;
-  background-color: var(--text-secondary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--text-two);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @media only screen and (max-width: 480px) {

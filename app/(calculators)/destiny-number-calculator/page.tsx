@@ -22,7 +22,7 @@ const DestinyNumberCalculator: FC = () => {
       setDOB(value);
       setResultVisibility(false);
     },
-    [setDOB]
+    [setDOB],
   );
 
   const destinyNymber = useMemo(() => {

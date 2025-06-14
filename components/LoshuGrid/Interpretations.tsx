@@ -46,9 +46,9 @@ const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
 
             return prev;
           },
-          { missing: [] as string[], present: {} as Record<string, number> }
+          { missing: [] as string[], present: {} as Record<string, number> },
         ),
-    [digitCount]
+    [digitCount],
   );
 
   const presentInterpretations = useMemo(
@@ -64,7 +64,7 @@ const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
           };
         })
         .sort((a, b) => b.count - a.count),
-    [present, loshuInterpretations]
+    [present, loshuInterpretations],
   );
 
   const missingInterpretations = useMemo(
@@ -76,7 +76,7 @@ const LoshuGridInterpretations: FC<LoshuGridInterpretationsProps> = ({
           interpretation: loshuInterpretations?.[number]?.[0],
         };
       }),
-    [missing, loshuInterpretations]
+    [missing, loshuInterpretations],
   );
 
   return (

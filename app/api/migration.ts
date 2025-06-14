@@ -21,7 +21,7 @@ const createTable = async ({
 };
 
 const readInterpretationsFromCSV = async (
-  filePath: string
+  filePath: string,
 ): Promise<Partial<InterpretationModel>[]> => {
   return new Promise((resolve, reject) => {
     const interpretations: Partial<InterpretationModel>[] = [];
@@ -67,7 +67,7 @@ async function seedUsers() {
 
       await pool.query(
         query,
-        users.flatMap((user) => [user.name, user.password, user.email])
+        users.flatMap((user) => [user.name, user.password, user.email]),
       );
 
       console.log(`✅ Seed data for ${SYS_USERS_TABLE} table`);
@@ -75,7 +75,7 @@ async function seedUsers() {
   } catch (error) {
     console.error(
       `❌ Failed to seed data for ${SYS_USERS_TABLE} table:`,
-      error
+      error,
     );
   }
 }
@@ -123,7 +123,7 @@ const seedInterpretations = async () => {
   } catch (error) {
     console.error(
       `❌ Failed to seed data for ${INTERPRETATIONS_TABLE} table:`,
-      error
+      error,
     );
   }
 };

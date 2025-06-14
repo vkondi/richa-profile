@@ -12,7 +12,7 @@ export async function GET() {
 
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -25,13 +25,13 @@ export async function POST(req: Request) {
     if (!email || !name || !password) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     await pool.query(
       `INSERT INTO SYS_USERS (email, name, password) VALUES ($1, $2, $3)`,
-      [email, name, password]
+      [email, name, password],
     );
 
     return NextResponse.json({ message: "User added successfully" });
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     console.error("sys_users POST >> Exception: ", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -52,13 +52,13 @@ export async function DELETE(req: Request) {
     if (!id) {
       return NextResponse.json(
         { error: "User ID is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const result = await pool.query(
       `DELETE FROM SYS_USERS WHERE id = $1 RETURNING *`,
-      [id]
+      [id],
     );
 
     if (result.rowCount === 0) {
@@ -70,7 +70,7 @@ export async function DELETE(req: Request) {
     console.error("sys_users DELETE >> Exception: ", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

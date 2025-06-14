@@ -28,7 +28,7 @@ const NameNumerologyCalculator: React.FC = () => {
       setName(e.target.value);
       setResultVisibility(false);
     },
-    [setName]
+    [setName],
   );
 
   const handleSystemChange = useCallback(
@@ -36,14 +36,14 @@ const NameNumerologyCalculator: React.FC = () => {
       setSystem(value);
       setResultVisibility(false);
     },
-    [setSystem]
+    [setSystem],
   );
 
   const nameToNumber = useMemo(() => {
     if (name) {
       return convertNameToNumber(
         name,
-        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
+        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING,
       );
     }
     return undefined;

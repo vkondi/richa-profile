@@ -31,8 +31,6 @@ const NameNumerologyCalculator: FC = () => {
   const { name, setName, dob, setDOB, system, setSystem } = useRootContext();
   const [resultVisibility, setResultVisibility] = useState<boolean>(false);
 
- 
-
   const handleCalculate = useCallback(() => {
     if ((name && system) || dob) {
       setResultVisibility(true);
@@ -43,28 +41,28 @@ const NameNumerologyCalculator: FC = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       setName(e.target.value);
     },
-    [setName]
+    [setName],
   );
 
   const handleDOBChange = useCallback(
     (value: string) => {
       setDOB(value);
     },
-    [setDOB]
+    [setDOB],
   );
 
   const handleSystemChange = useCallback(
     (value: SystemType) => {
       setSystem(value);
     },
-    [setSystem]
+    [setSystem],
   );
 
   const nameToNumber = useMemo(() => {
     if (name) {
       return convertNameToNumber(
         name,
-        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING
+        system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING,
       );
     }
     return undefined;
@@ -130,8 +128,6 @@ const NameNumerologyCalculator: FC = () => {
   useEffect(() => {
     setResultVisibility(false);
   }, [name, dob, system]);
-
-
 
   return (
     <NameDateCalcTemplate

@@ -30,7 +30,7 @@ const LifePathNumber = () => {
       setDOB(value);
       setResultVisibility(false);
     },
-    [setDOB]
+    [setDOB],
   );
 
   const renderResultTiles = () => {

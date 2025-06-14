@@ -1,23 +1,29 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
-type Theme = 'light' | 'dark';
+type Theme = "light" | "dark";
 
 const colorPalettes = {
   dark: {
-    primary: '#0d1b2a',
-    secondary: '#1b263b',
-    tertiary: '#415a77',
-    quaternary: '#778da9',
-    accent: '#e0e1dd',
+    primary: "#0d1b2a",
+    secondary: "#1b263b",
+    tertiary: "#415a77",
+    quaternary: "#778da9",
+    accent: "#e0e1dd",
   },
   light: {
-    primary: '#edafb8',
-    secondary: '#f7e1d7',
-    tertiary: '#dedbd2',
-    quaternary: '#b0c4b1',
-    accent: '#4a5759',
+    primary: "#edafb8",
+    secondary: "#f7e1d7",
+    tertiary: "#dedbd2",
+    quaternary: "#b0c4b1",
+    accent: "#4a5759",
   },
 };
 
@@ -30,19 +36,19 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
+    const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (
@@ -61,7 +67,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
-}; 
+};

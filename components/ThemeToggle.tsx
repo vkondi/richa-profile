@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useTheme } from "@/context/ThemeContext";
 import { useEffect } from "react";
 
@@ -52,4 +52,4 @@ export default function ThemeToggle() {
       )}
     </button>
   );
-} 
+}

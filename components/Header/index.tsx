@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({
                   className={styles.dropdown}
                   onClick={() =>
                     setOpenDropdown(
-                      openDropdown === item.title ? null : item.title
+                      openDropdown === item.title ? null : item.title,
                     )
                   }
                   ref={dropdownRef}

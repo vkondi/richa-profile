@@ -1,5 +1,5 @@
-import UnderConstruction from "@/components/layouts/UnderConstruction";
+import Dashboard from "./(pages)/dashboard/page";
 
 export default function Home() {
-  return <UnderConstruction />;
+  return <Dashboard />;
 }

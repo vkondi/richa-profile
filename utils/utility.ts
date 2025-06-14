@@ -18,7 +18,7 @@ export const reduceToSingleDigit = (num: number): number => {
 // Convert Name to Number using given Mapping
 export const convertNameToNumber = (
   name: string,
-  mapping: Record<string, number> = PYTHAGOREAN_MAPPING
+  mapping: Record<string, number> = PYTHAGOREAN_MAPPING,
 ): number => {
   const total = name
     .toUpperCase()
@@ -32,7 +32,7 @@ export const convertNameToNumber = (
 // Calculate Expression Number (Destiny Number)
 export const getExpressionNumber = (
   name: string,
-  system: "pythagorean" | "chaldean" = "pythagorean"
+  system: "pythagorean" | "chaldean" = "pythagorean",
 ): number => {
   const mapping =
     system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING;
@@ -42,7 +42,7 @@ export const getExpressionNumber = (
 // Calculate Personality Number (Sum of Consonants)
 export const getPersonalityNumber = (
   name: string,
-  system: "pythagorean" | "chaldean" = "pythagorean"
+  system: "pythagorean" | "chaldean" = "pythagorean",
 ): number => {
   const mapping =
     system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING;
@@ -52,14 +52,14 @@ export const getPersonalityNumber = (
       .replace(/[^A-Z]/g, "") // Remove non-alphabetic characters
       .split("")
       .filter((char) => !"AEIOU".includes(char)) // Keep only consonants
-      .reduce((sum, char) => sum + (mapping[char] || 0), 0)
+      .reduce((sum, char) => sum + (mapping[char] || 0), 0),
   );
 };
 
 // Calculate Soul Urge Number (Heart’s Desire) - Sum of Vowels
 export const getSoulUrgeNumber = (
   name: string,
-  system: "pythagorean" | "chaldean" = "pythagorean"
+  system: "pythagorean" | "chaldean" = "pythagorean",
 ): number => {
   const mapping =
     system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING;
@@ -69,7 +69,7 @@ export const getSoulUrgeNumber = (
       .replace(/[^A-Z]/g, "") // Remove non-alphabetic characters
       .split("")
       .filter((char) => "AEIOU".includes(char)) // Keep only vowels
-      .reduce((sum, char) => sum + (mapping[char] || 0), 0)
+      .reduce((sum, char) => sum + (mapping[char] || 0), 0),
   );
 };
 
@@ -93,7 +93,7 @@ export const getDestinyNumber = (dateString: string): number | string => {
 export const getNameCompatibility = (
   name1: string,
   name2: string,
-  system: "pythagorean" | "chaldean" = "pythagorean"
+  system: "pythagorean" | "chaldean" = "pythagorean",
 ): number => {
   const num1 = getExpressionNumber(name1, system);
   const num2 = getExpressionNumber(name2, system);
@@ -104,7 +104,7 @@ export const getNameCompatibility = (
 export const suggestLuckyNames = (
   name: string,
   targetNumber: number,
-  system: "pythagorean" | "chaldean" = "pythagorean"
+  system: "pythagorean" | "chaldean" = "pythagorean",
 ): string[] => {
   const mapping =
     system === "chaldean" ? CHALDEAN_MAPPING : PYTHAGOREAN_MAPPING;
@@ -148,7 +148,7 @@ export const suggestLuckyNames = (
  *  - Pinnacle Number 4 (Phase 4): Birth Month + Birth Year
  */
 export const calculatePinnacleNumber = (
-  dateString: string
+  dateString: string,
 ): PinnacleDataType[] => {
   const destinyNumber = getDestinyNumber(dateString) as number;
   const dateObj = new Date(dateString);

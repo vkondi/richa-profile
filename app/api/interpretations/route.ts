@@ -34,7 +34,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
               pool.query(
                 `INSERT INTO INTERPRETATIONS (type, number, description)
                  VALUES ($1, $2, $3) ON CONFLICT (type, number) DO NOTHING RETURNING *`,
-                [curr.type, curr.number, curr.description]
+                [curr.type, curr.number, curr.description],
               ),
             ],
           };
@@ -71,14 +71,14 @@ export async function POST(req: Request) {
           };
         }
       },
-      { missingFields: [], queryPool: [] }
+      { missingFields: [], queryPool: [] },
     );
 
     // Check for missing fields data
     if (missingFields.length) {
       return NextResponse.json(
         { error: "Missing request data", data: missingFields },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -114,7 +114,7 @@ export async function DELETE(req: Request) {
     console.error("interpretations DELETE >> Exception: ", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -128,7 +128,7 @@ export async function PUT(request: Request) {
     if (!id) {
       return NextResponse.json(
         { error: "Missing id for update" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -139,13 +139,13 @@ export async function PUT(request: Request) {
            description = COALESCE($3, description)
        WHERE id = $4
        RETURNING *`,
-      [data.type, data.number, data.description, id]
+      [data.type, data.number, data.description, id],
     );
 
     if (result.rowCount === 0) {
       return NextResponse.json(
         { error: "No interpretation found with the given id" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -154,7 +154,7 @@ export async function PUT(request: Request) {
     console.error("interpretations PUT >> Exception: ", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

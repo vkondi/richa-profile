@@ -6,12 +6,22 @@
   --background: #ffffff;
   --foreground: #171717;
   --header-background: #d55882;
+  --text-one: #171717;
+  --text-two: #4a5759;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-one);
   background: var(--background);
-  font-family: "Josefin Sans", sans-serif;
+  font-family:
+    var(--font-inter),
+    system-ui,
+    -apple-system,
+    sans-serif;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .boxShadow {
@@ -32,13 +42,64 @@ body {
   align-items: center;
   justify-content: center;
   margin: 3rem 0;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .label {
-  color: black;
+  color: var(--text-one);
   font-size: max(1.1vw, 1em);
   margin-top: 20px;
+}
+
+/* Theme-specific styles */
+[data-theme="dark"] {
+  --background: #0d1b2a;
+  --foreground: #e0e1dd;
+  --header-background: #1b263b;
+  --text-one: #e0e1dd;
+  --text-two: #778da9;
+  --text-three: #e0e1dd;
+  --text-input: #0d1b2a;
+  --loshu-grid-cell-background: #ffcdcd;
+  --loshu-grid-cell-with-count-background: #90ee90;
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #4a5759;
+  --header-background: #d55882;
+  --text-one: #4a5759;
+  --text-two: #2c3639;
+  --text-three: #ffffff;
+  --text-input: #0d1b2a;
+  --loshu-grid-cell-background: radial-gradient(transparent, #8000002b);
+  --loshu-grid-cell-with-count-background: radial-gradient(
+    transparent,
+    #90ee904f
+  );
+}
+
+/* Ensure all text elements use the theme colors */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div {
+  color: var(--text-one);
+}
+
+/* Ensure links are visible in both themes */
+a {
+  color: var(--text-one);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-two);
 }
 
 @media only screen and (max-width: 480px) {

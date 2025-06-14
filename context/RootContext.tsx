@@ -28,7 +28,7 @@ type RootContextType = {
   interpretations?: InterpretationModel[];
   getInterpretation: (
     type: InterpretationModel["type"],
-    number: InterpretationModel["number"]
+    number: InterpretationModel["number"],
   ) => InterpretationModel | null;
   fetchLoshuInterpretations: (forceFetch?: boolean) => void;
   loshuInterpretations?: LoshuGridInterpretation;
@@ -57,7 +57,7 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
       // Error check
       if (!response.ok) {
         throw new Error(
-          parsedResponse.error || "Failed fetching interpretations"
+          parsedResponse.error || "Failed fetching interpretations",
         );
       }
 
@@ -79,7 +79,7 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
       // Error check
       if (!response.ok) {
         throw new Error(
-          parsedResponse.error || "Failed fetching loshu interpretations"
+          parsedResponse.error || "Failed fetching loshu interpretations",
         );
       }
 
@@ -92,22 +92,22 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
   const getInterpretation = useCallback(
     (
       type: InterpretationModel["type"],
-      number: InterpretationModel["number"]
+      number: InterpretationModel["number"],
     ): InterpretationModel | null => {
       // Implement the logic to find and return the appropriate interpretation
       const interpretation = interpretations?.find(
         (interpretation) =>
-          interpretation.type === type && interpretation.number === number
+          interpretation.type === type && interpretation.number === number,
       );
       if (!interpretation) {
         console.error(
-          `Interpretation not found for type: ${type} and number: ${number}`
+          `Interpretation not found for type: ${type} and number: ${number}`,
         );
         return null;
       }
       return interpretation;
     },
-    [interpretations]
+    [interpretations],
   );
 
   useEffect(() => {

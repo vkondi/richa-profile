@@ -33,7 +33,7 @@ const PinnacleNumberCalculator: FC = () => {
       setDOB(value);
       setResultVisibility(false);
     },
-    [setDOB]
+    [setDOB],
   );
 
   const renderResultTiles = () => {

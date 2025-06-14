@@ -44,7 +44,7 @@ export function generateSessionToken(user: SysUserModel) {
         id: user.id,
         email: user.email,
         exp,
-      })
+      }),
     ).toString("base64"),
     exp,
   };

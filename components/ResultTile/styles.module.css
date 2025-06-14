@@ -1,5 +1,5 @@
 .resultTile {
-  background-color: gold;
+  background-color: var(--header-background);
   width: calc(33.33% - 0px);
   aspect-ratio: 1 / 1;
   min-width: 155px;
@@ -9,6 +9,13 @@
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.resultTile:hover {
+  transform: scale(1.02);
 }
 
 .resultTileTitle {
@@ -21,17 +28,22 @@
   text-overflow: unset;
   overflow: hidden;
   word-wrap: break-word;
+  color: var(--text-three);
+  transition: color 0.3s ease;
 }
 
 .resultTileResult {
-  color: #000000ab;
+  color: var(--background);
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: max(3.5vw, 4em);
   font-weight: bold;
-  background-color: #fbfaef;
+  background-color: var(--text-two);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @media only screen and (max-width: 480px) {

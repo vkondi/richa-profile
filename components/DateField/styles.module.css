@@ -4,6 +4,7 @@
   border: 1px solid #303030;
   border-radius: 0.5rem;
   letter-spacing: 1px;
+  color: var(--text-input);
 }
 
 .inputField:focus {

@@ -13,7 +13,7 @@
 }
 
 .popup {
-  background-color: white;
+  background-color: var(--background);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -35,7 +35,7 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-one);
 }
 
 .closeButton {
@@ -61,7 +61,7 @@
 .body {
   padding: 1.5rem;
   line-height: 1.6;
-  color: #444;
+  color: var(--text-two);
 }
 
 @keyframes fadeIn {

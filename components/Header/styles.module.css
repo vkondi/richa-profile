@@ -4,30 +4,34 @@
   justify-content: space-between;
   padding: 16px 5vw;
   background-color: var(--header-background);
-  color: white;
+  color: var(--text-three);
   position: fixed; /* Fixed to the top */
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1000; /* Ensures it stays above other content */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .titleLeft {
   font-size: 1.5rem;
   font-weight: bold;
+  color: var(--text-three);
 }
 
 .titleCenter {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0 auto;
+  color: var(--text-three);
 }
 
 .nav {
   display: flex;
   gap: 20px;
-  /* background-color: rgb(102, 102, 100); */
   align-items: center;
 }
 
@@ -38,19 +42,21 @@
 
 .navLink {
   text-decoration: none;
-  color: white;
+  color: var(--text-three);
   font-size: 1rem;
   padding: 8px;
+  transition: color 0.3s ease;
 }
 
 .navLink:hover {
-  color: #facc15; /* Yellow */
+  color: var(--text-two);
 }
 
 .dropdown {
   position: relative;
   padding: 8px;
   cursor: pointer;
+  color: var(--text-three);
 }
 
 .dropdownMenu {
@@ -69,12 +75,14 @@
 .dropdownItem {
   padding: 10px;
   text-decoration: none;
-  color: white;
+  color: var(--text-three);
   font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 .dropdownItem:hover {
-  background-color: #858585; /* Darker gray */
+  background-color: var(--text-two);
+  color: var(--background);
 }
 
 .menuButton {
@@ -82,7 +90,7 @@
   font-size: 1.8rem;
   background: none;
   border: none;
-  color: white;
+  color: var(--text-three);
   cursor: pointer;
 }
 
@@ -103,7 +111,7 @@
 .closeButton {
   background: none;
   border: none;
-  color: white;
+  color: var(--text-three);
   font-size: 1.5rem;
   cursor: pointer;
   align-self: flex-end;
@@ -111,18 +119,21 @@
 
 .drawerItem {
   margin-top: 10px;
+  color: var(--text-three);
 }
 
 .drawerLink {
   text-decoration: none;
-  color: white;
+  color: var(--text-three);
   font-size: 1rem;
   display: block;
   padding: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .drawerLink:hover {
-  background-color: #4b5563;
+  background-color: var(--text-two);
+  color: var(--background);
 }
 
 .drawerSubmenu {

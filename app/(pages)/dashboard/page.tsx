@@ -3,6 +3,63 @@ import React, { useState } from "react";
 import Popup from "@/components/Popup";
 import Image from "next/image";
 
+const welcomeTitle = "Welcome to the World of Numerology with Richa Sharma";
+const welcomeDescription =
+  "Embark on a transformative journey with Richa Sharma, a renowned Certified Numerologist. With a deep understanding of the mystical relationship between numbers and life events, Richa offers personalised guidance and empowers you to live a vibrant and meaningful life.";
+const aboutTitle = "About Numerology";
+const aboutDescription =
+  "Numerology is the ancient study of numbers and their influence on human life. It is based on the idea that everything in the universe is interconnected and that numbers hold a special significance. As a Certified Numerologist, Richa Sharma uses this sacred knowledge to provide clarity and direction, helping individuals make informed decisions about their personal and professional lives.";
+const servicesTitle = "Numerology Services";
+const services = [
+  {
+    title: "Personal Numerology",
+    description:
+      "Gain insights into your personality, strengths, and challenges.",
+  },
+  {
+    title: "Life Path Analysis",
+    description:
+      "Discover your life's purpose and the opportunities that lie ahead.",
+  },
+  {
+    title: "Compatibility Analysis",
+    description:
+      "Understand the dynamics of your relationships with friends, family, and partners.",
+  },
+  {
+    title: "Career Guidance",
+    description:
+      "Align your career choices with your numerological profile for success and fulfillment.",
+  },
+  {
+    title: "Name and Date Correction",
+    description:
+      "Optimize your name and important dates to enhance your life's energy.",
+  },
+];
+const insightsTitle = "Explore Numerology Insights";
+const insights = [
+  {
+    title: "The Power of Numbers",
+    description:
+      "Numbers are not just mathematical symbols; they carry vibrational energy that influences our lives.",
+  },
+  {
+    title: "Personalized Readings",
+    description:
+      "Each numerology reading is tailored to your unique numerical profile, providing personalized insights and guidance.",
+  },
+  {
+    title: "Life Path Number",
+    description:
+      "Your Life Path Number reveals your life's purpose and the journey you are destined to take.",
+  },
+  {
+    title: "Career and Numerology",
+    description:
+      "Align your career with your numerological profile to achieve success and satisfaction in your professional life.",
+  },
+];
 const socialLinks = [
   {
     label: "Facebook",
@@ -47,18 +104,17 @@ const socialLinks = [
     ),
   },
 ];
+const copyright = `Copyright © ${new Date().getFullYear()} Richa Sharma. All Rights Reserved`;
 
 const Dashboard = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className="flex flex-col gap-8 px-2 sm:px-4 py-8 max-w-6xl mx-auto pt-[80px]">
+    <div className="flex flex-col gap-8 px-2 sm:px-4 py-8 max-w-6xl mx-auto pt-[120px]">
       {/* Welcome Section */}
       <section className="flex flex-col md:flex-row gap-6 items-start md:items-stretch">
         {/* Profile Picture: On mobile, show first; on desktop, show right and take at least 40% width */}
-        <div
-          className="order-1 md:order-2 w-full md:w-2/5 flex justify-center items-center"
-        >
+        <div className="order-1 md:order-2 w-full md:w-1/4 flex justify-center items-center">
           <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-full md:h-auto flex items-center justify-center mx-auto md:mx-0">
             <Image
               src="/images/richa_sharma.jpg"
@@ -66,88 +122,45 @@ const Dashboard = () => {
               width={500}
               height={500}
               className="object-cover w-40 h-40 sm:w-48 sm:h-48 md:w-full md:h-auto rounded-full md:rounded-lg"
-              // rounded-full on mobile, rounded-lg on desktop
             />
           </div>
         </div>
         {/* Description: On mobile, show after picture; on desktop, show left */}
         <div className="order-2 md:order-1 flex-1 rounded-lg shadow p-6 bg-background">
-          <h2 className="font-bold text-lg text-foreground">
-            Welcome to the World of Numerology with Richa Sharma
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Embark on a transformative journey with Richa Sharma, a renowned
-            Certified Numerologist. With a deep understanding of the mystical
-            relationship between numbers and life events, Richa offers
-            personalised guidance and empowers you to live a vibrant and
-            meaningful life. (Placeholder text)
+          <div className="font-bold text-xl md:text-2xl text-foreground mb-4 leading-8">
+            {welcomeTitle}
+          </div>
+          <p className="text-s text-muted-foreground leading-7">
+            {welcomeDescription}
           </p>
         </div>
       </section>
 
       {/* About Numerology */}
       <section className="rounded-lg shadow p-6 bg-background">
-        <h3 className="font-semibold mb-2 text-foreground">About Numerology</h3>
-        <p className="text-sm text-muted-foreground">
-          Numerology is the ancient study of numbers and their influence on
-          human life. It is based on the idea that everything in the universe is
-          interconnected and that numbers hold a special significance. As a
-          Certified Numerologist, Richa Sharma uses this sacred knowledge to
-          provide clarity and direction, helping individuals make informed
-          decisions about their personal and professional lives. (Placeholder
-          text)
-        </p>
+        <h3 className="font-semibold mb-2 text-foreground">{aboutTitle}</h3>
+        <p className="text-sm text-muted-foreground">{aboutDescription}</p>
       </section>
 
       {/* Numerology Services */}
       <section className="rounded-lg shadow p-6 bg-background">
-        <h3 className="font-semibold mb-4 text-foreground">
-          Numerology Services
-        </h3>
+        <h3 className="font-semibold mb-4 text-foreground">{servicesTitle}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Personal Numerology
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700"
+            >
+              <div className="font-semibold text-foreground">
+                {service.title}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {service.description}
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground">
-              Gain insights into your personality, strengths, and challenges.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Life Path Analysis
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Discover your life&apos;s purpose and the opportunities that lie
-              ahead.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Compatibility Analysis
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Understand the dynamics of your relationships with friends,
-              family, and partners.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">Career Guidance</div>
-            <div className="text-xs text-muted-foreground">
-              Align your career choices with your numerological profile for
-              success and fulfillment.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Name and Date Correction
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Optimize your name and important dates to enhance your life&apos;s
-              energy.
-            </div>
-          </div>
+          ))}
         </div>
+
         <div className="flex justify-center mt-6">
           <button
             className="bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 px-6 py-2 rounded shadow hover:bg-gray-700 dark:hover:bg-gray-300 transition"
@@ -169,46 +182,21 @@ const Dashboard = () => {
 
       {/* Explore Numerology Insights */}
       <section className="rounded-lg shadow p-6 bg-background">
-        <h3 className="font-semibold mb-4 text-foreground">
-          Explore Numerology Insights
-        </h3>
+        <h3 className="font-semibold mb-4 text-foreground">{insightsTitle}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              The Power of Numbers
+          {insights.map((insight) => (
+            <div
+              key={insight.title}
+              className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700"
+            >
+              <div className="font-semibold text-foreground">
+                {insight.title}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {insight.description}
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground">
-              Numbers are not just mathematical symbols; they carry vibrational
-              energy that influences our lives.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Personalized Readings
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Each numerology reading is tailored to your unique numerical
-              profile, providing personalized insights and guidance.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Life Path Number
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Your Life Path Number reveals your life&apos;s purpose and the
-              journey you are destined to take.
-            </div>
-          </div>
-          <div className="border rounded p-4 flex flex-col gap-2 bg-background border-gray-200 dark:border-gray-700">
-            <div className="font-semibold text-foreground">
-              Career and Numerology
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Align your career with your numerological profile to achieve
-              success and satisfaction in your professional life.
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -228,9 +216,9 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* Footer Placeholder */}
+      {/* Footer */}
       <footer className="text-center text-xs text-muted-foreground mt-8">
-      Copyright © 2025 Richa Sharma. All Rights Reserved
+        {copyright}
       </footer>
     </div>
   );

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { HEADER_MENU_ITEMS } from "@/utils/constants";
+import { APP_TITLE, HEADER_MENU_ITEMS } from "@/utils/constants";
 import { RootProvider } from "@/context/RootContext";
 import { PopupProvider } from "@/context/PopupContext";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Richa Sharma K",
+  title: APP_TITLE,
   description: "A certified numerologist",
 };
 

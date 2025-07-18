@@ -24,6 +24,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cloudflareToken = process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN;
+
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
@@ -39,6 +41,14 @@ export default function RootLayout({
             </PopupProvider>
           </RootProvider>
         </ThemeProvider>
+
+        {/* Cloudflare Web Analytics */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cloudflareToken}"}`}
+        ></script>
+        {/* End Cloudflare Web Analytics */}
       </body>
     </html>
   );

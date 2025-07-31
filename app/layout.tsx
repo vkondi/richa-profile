@@ -16,7 +16,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: APP_TITLE,
-  description: "A certified numerologist",
+  description:
+    "Richa Sharma is a certified numerologist offering personalized guidance through the ancient science of numerology.",
+  openGraph: {
+    title: APP_TITLE,
+    description:
+      "Richa Sharma is a certified numerologist offering personalized guidance through the ancient science of numerology.",
+    type: "website",
+    url: "https://richa-sharma-k.vercel.app/",
+    images: [
+      {
+        url: "https://richa-sharma-k.vercel.app/thumbnail.png",
+        width: 1167,
+        height: 502,
+        alt: APP_TITLE,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: APP_TITLE,
+    description:
+      "Richa Sharma is a certified numerologist offering personalized guidance through the ancient science of numerology.",
+    images: ["https://richa-sharma-k.vercel.app/thumbnail.png"],
+  },
 };
 
 export default function RootLayout({

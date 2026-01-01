@@ -4,39 +4,39 @@ This checklist ensures that all basic essentials are covered for maintaining cod
 
 ## 1. Testing
 
-- [x] Unit testing is enabled
+- [ ] Unit testing is enabled
 - [ ] Coverage target set to greater than 90%
 
 ## 2. Linting
 
-- [x] Linting is enabled
-- [x] Lint script added to `package.json`
-- [x] Recommended linting rules added based on the project tech stack
+- [ ] Linting is enabled
+- [ ] Lint script added to `package.json`
+- [ ] Recommended linting rules added based on the project tech stack
 
 ## 3. Type Safety
 
-- [x] TypeScript is enabled
-- [x] Type safety check script added to `package.json`
+- [ ] TypeScript is enabled
+- [ ] Type safety check script added to `package.json`
 
 ## 4. Formatter
 
-- [x] Formatter is enabled
-- [x] Format script added to `package.json`
+- [ ] Formatter is enabled
+- [ ] Format script added to `package.json`
 
 ## 5. Husky
 
-- [x] Husky is configured
-- [x] Lint check added to pre-commit hook
-- [x] Type check added to pre-commit hook
-- [x] Formatting check added to pre-commit hook
-- [x] Husky prepare script added to `package.json`
+- [ ] Husky is configured
+- [ ] Lint check added to pre-commit hook
+- [ ] Type check added to pre-commit hook
+- [ ] Formatting check added to pre-commit hook
+- [ ] Husky prepare script added to `package.json`
 
 ## 6. GitHub Actions
 
-- [x] CI configured with lint job
-- [x] CI configured with type check job
-- [x] CI configured with test job
-- [x] CI configured with build job
+- [ ] CI configured with lint job
+- [ ] CI configured with type check job
+- [ ] CI configured with test job
+- [ ] CI configured with build job
 
 ## 7. SEO Implementation
 
@@ -53,14 +53,14 @@ This checklist ensures that all basic essentials are covered for maintaining cod
 
 ## 8. Documentation
 
-- [x] Code of Conduct document added
-- [x] Contributing document added
-- [x] Testing guidelines document added
-- [x] Pull request guidelines document added
-- [x] README includes CI status badge
-- [x] README includes Tech Stack information
-- [x] README includes other relevant badges
-- [x] README properly embeds documentation details
+- [ ] Code of Conduct document added
+- [ ] Contributing document added
+- [ ] Testing guidelines document added
+- [ ] Pull request guidelines document added
+- [ ] README includes CI status badge
+- [ ] README includes Tech Stack information
+- [ ] README includes other relevant badges
+- [ ] README properly embeds documentation details
 - [ ] SEO guide document added
 
 ---
